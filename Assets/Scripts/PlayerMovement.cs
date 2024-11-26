@@ -8,10 +8,15 @@ public class PlayerMovement : MonoBehaviour
     private float inputAxis;
 
     public float moveSpeed = 8f;
+    public int maxmeter = 100;
+    public int currentmeter;
+    public SocialMeter socialMeter;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        currentmeter = maxmeter;
+        socialMeter.SetMaxMeter(maxmeter);
     }
 
     //This function gets called every frame the game is running.
@@ -19,6 +24,17 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         HorizontalMovement();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(20);
+        }
+        
+    }
+
+    void TakeDamage(int damage)
+    {
+        currentmeter -= damage;
+        socialMeter.SetMeter(currentmeter);
     }
 
     private void HorizontalMovement()
