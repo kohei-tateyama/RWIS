@@ -90,7 +90,7 @@ public class InputManager : MonoBehaviour
     public bool GetJumpPressed() 
     {
         bool result = jumpPressed;
-        jumpPressed = false;
+        //jumpPressed = false;
         return result;
     }
 
