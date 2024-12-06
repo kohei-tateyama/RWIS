@@ -8,12 +8,12 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - PowerUp
+  - Enemy
+  - Shell
   - 
   - 
   - 
@@ -39,11 +39,8 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 4052290537
+    uniqueID: 1609505275
     locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Blocks
-    uniqueID: 3093506939
     locked: 0
