@@ -11,7 +11,7 @@ public class SideScrollingCamera : MonoBehaviour
     private void LateUpdate()
     {
         Vector3 cameraPosition = transform.position;
-        cameraPosition.x = Mathf.Max(cameraPosition.x, trackedObject.position.x);
+        cameraPosition.x = trackedObject.position.x;
         transform.position = cameraPosition;
     }
 
