@@ -55,6 +55,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene($"{world}-{stage}");
     }
 
+    public void LoadRoom(int room)
+    {
+        SceneManager.LoadScene($"Room_{room}");
+    }
+
     public void NextLevel()
     {
         LoadLevel(world, stage + 1);
