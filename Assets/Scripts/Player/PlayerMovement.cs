@@ -152,6 +152,29 @@ public class PlayerMovement : MonoBehaviour
                 velocity.y = 0f;
             }
         }
+
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("NPC") 
+            || collision.gameObject.layer == LayerMask.NameToLayer("Door"))
+        {
+            InteractionButtonManager.GetInstance().ShowButton();
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("NPC") 
+            || collision.gameObject.layer == LayerMask.NameToLayer("Door"))
+        {
+            InteractionButtonManager.GetInstance().HideButton();
+        }
+    }
+
+
 }
+
+
