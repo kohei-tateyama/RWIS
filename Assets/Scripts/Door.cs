@@ -3,8 +3,8 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
 
-    [Header("Room number")]
-    [SerializeField] private int roomNumber;
+    [Header("Room name")]
+    [SerializeField] private string roomName;
 
     [Header("Glowing sprite")]
     [SerializeField] private GameObject glowSprite;
@@ -35,7 +35,7 @@ public class Door : MonoBehaviour
             if (InputManager.GetInstance().GetInteractPressed()) 
             {
                 // Change scene / enter room
-                GameManager.Instance.LoadRoom(roomNumber);
+                GameManager.Instance.LoadRoom(roomName);
             }
         }
         else 
