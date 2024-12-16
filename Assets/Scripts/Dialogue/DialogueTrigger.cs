@@ -5,9 +5,6 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
 
-    [Header("Interaction On-Screen Button")]
-    [SerializeField] private GameObject interactionButton;
-
     [Header("Emote Animator")]
     [SerializeField] private Animator emoteAnimator;
 
@@ -20,7 +17,6 @@ public class DialogueTrigger : MonoBehaviour
     {
         playerInRange = false;
         visualCue.SetActive(false);
-        interactionButton.SetActive(false);
     }
 
     private void Update() 
@@ -36,7 +32,6 @@ public class DialogueTrigger : MonoBehaviour
         else 
         {
             visualCue.SetActive(false);
-            interactionButton.SetActive(false);
         }
     }
 

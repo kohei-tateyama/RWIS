@@ -31,10 +31,7 @@ public class Door : MonoBehaviour
 
             // blink between original and highlight color
             float t = Mathf.PingPong(Time.time * blinkSpeed, 1f);
-            spriteRenderer.color = Color.Lerp(originalColor, highlightColor, t);
-            
-            // InteractionButtonManager.GetInstance().ShowButton();
-            
+            spriteRenderer.color = Color.Lerp(originalColor, highlightColor, t);            
             if (InputManager.GetInstance().GetInteractPressed()) 
             {
                 // Change scene / enter room
@@ -44,7 +41,6 @@ public class Door : MonoBehaviour
         else 
         {
             glowSprite.SetActive(false);
-            // InteractionButtonManager.GetInstance().HideButton();
         }
     }
 
