@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    // [Header("Interact button")]
-    // [SerializeField] private GameObject interactButton;
 
     [Header("Room number")]
     [SerializeField] private int roomNumber;
@@ -23,7 +21,6 @@ public class Door : MonoBehaviour
         glowSprite.SetActive(false);
         spriteRenderer = glowSprite.GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
-        // interactButton.SetActive(false);
     }
 
     private void Update() 
@@ -35,8 +32,9 @@ public class Door : MonoBehaviour
             // blink between original and highlight color
             float t = Mathf.PingPong(Time.time * blinkSpeed, 1f);
             spriteRenderer.color = Color.Lerp(originalColor, highlightColor, t);
-
-            // interactButton.SetActive(true);
+            
+            // InteractionButtonManager.GetInstance().ShowButton();
+            
             if (InputManager.GetInstance().GetInteractPressed()) 
             {
                 // Change scene / enter room
@@ -46,7 +44,7 @@ public class Door : MonoBehaviour
         else 
         {
             glowSprite.SetActive(false);
-            // interactButton.SetActive(false);
+            // InteractionButtonManager.GetInstance().HideButton();
         }
     }
 
