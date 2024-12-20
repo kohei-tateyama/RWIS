@@ -22,12 +22,17 @@ public class PlayerMovement : MonoBehaviour
     public bool running => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis.x) > 0.25f;
     public bool sliding => (inputAxis.x > 0f && velocity.x < 0f) || (inputAxis.x < 0f && velocity.x > 0f);
     public bool falling => velocity.y < 0f && !grounded;
+    private RectTransform rectTransformSocialMeter,rectTransformBatteryBar;
 
     private void Awake()
     {
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<Collider2D>();
+        Transform childObjectBattery = transform.Find("Canvas Battery");
+        Transform childObjectSocialMeter = transform.Find("Canvas SM");
+        rectTransformBatteryBar = childObjectBattery.GetComponent<RectTransform>();
+        rectTransformSocialMeter = childObjectSocialMeter.GetComponent<RectTransform>();
     }
 
     private void OnEnable()
@@ -98,8 +103,13 @@ public class PlayerMovement : MonoBehaviour
         // Flip sprite to face direction
         if (velocity.x > 0f) {
             transform.eulerAngles = Vector3.zero;
+            rectTransformBatteryBar.eulerAngles = Vector3.zero;
+            rectTransformSocialMeter.eulerAngles = Vector3.zero;
         } else if (velocity.x < 0f) {
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
+            rectTransformBatteryBar.eulerAngles = Vector3.zero;
+            rectTransformSocialMeter.eulerAngles = Vector3.zero;
+
         }
     }
 

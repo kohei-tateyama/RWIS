@@ -12,12 +12,9 @@ public class Koopa : MonoBehaviour
     {
         if (!shelled && collision.gameObject.CompareTag("Player") && collision.gameObject.TryGetComponent(out Player player))
         {
-            if (player.starpower) {
-                Hit();
-            } else if (collision.transform.DotTest(transform, Vector2.down)) {
+            if (collision.transform.DotTest(transform, Vector2.down)) {
                 EnterShell();
             }  else {
-                player.Hit();
             }
         }
     }
@@ -31,18 +28,6 @@ public class Koopa : MonoBehaviour
                 Vector2 direction = new(transform.position.x - other.transform.position.x, 0f);
                 PushShell(direction);
             }
-            else
-            {
-                if (player.starpower) {
-                    Hit();
-                } else {
-                    player.Hit();
-                }
-            }
-        }
-        else if (!shelled && other.gameObject.layer == LayerMask.NameToLayer("Shell"))
-        {
-            Hit();
         }
     }
 
