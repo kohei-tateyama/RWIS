@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a3f0c4b436445738bda45bd89ead12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomName: 
+  roomName: Room_100
   glowSprite: {fileID: 1982038395}
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   blinkSpeed: 1
