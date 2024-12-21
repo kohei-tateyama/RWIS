@@ -8,15 +8,18 @@ VAR player_input = ""
 === classroom ===
 Teacher: We have a new student here today. Please introduce yourself.
 
-+ [Hello, I'm MC. I just moved here from Mars. It's nice to meet you.]
+MC: Hello, I'm MC. I just moved here from Mars. It's nice to meet you.
+
++ [Mention your hearing impairment]
+    ~ social_meter = social_meter - 1
+    I have hearing loss so please be patient if I can't understand what you are saying.
     -> teacher_response
 
-+ [Hello, I'm MC. I just moved here from Mars. I have hearing loss so please be patient if I can't understand what you are saying.]
-    ~ social_meter = social_meter - 1
++ [Do not say anything]
     -> teacher_response
 
 === teacher_response ===
-Teacher: Thank you, you can sit next to Classmate.
+Teacher: Thank you, you can sit there.
 
 -> classmate_interaction
 

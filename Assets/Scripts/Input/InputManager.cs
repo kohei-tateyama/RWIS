@@ -14,20 +14,15 @@ public class InputManager : MonoBehaviour
     private bool interactPressed = false;
     private bool submitPressed = false;
 
-    private static InputManager instance;
+    public static InputManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogError("Found more than one Input Manager in the scene.");
         }
-        instance = this;
-    }
-
-    public static InputManager GetInstance() 
-    {
-        return instance;
+        Instance = this;
     }
 
     public void MovePressed(InputAction.CallbackContext context)

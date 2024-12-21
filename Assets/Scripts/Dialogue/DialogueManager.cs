@@ -42,14 +42,14 @@ public class DialogueManager : MonoBehaviour
     // private Dictionary<string, DialogueAudioInfoSO> audioInfoDictionary;
     // private AudioSource audioSource;
 
+    public static DialogueManager Instance { get; private set; }
+
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
 
     private bool canContinueToNextLine = false;
 
     private Coroutine displayLineCoroutine;
-
-    private static DialogueManager instance;
 
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
@@ -62,22 +62,17 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake() 
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
-        instance = this;
+        Instance = this;
 
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
         inkExternalFunctions = new InkExternalFunctions();
 
         // audioSource = this.gameObject.AddComponent<AudioSource>();
         // currentAudioInfo = defaultAudioInfo;
-    }
-
-    public static DialogueManager GetInstance() 
-    {
-        return instance;
     }
 
     private void Start() 
@@ -138,7 +133,7 @@ public class DialogueManager : MonoBehaviour
         // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
         if (canContinueToNextLine 
             && currentStory.currentChoices.Count == 0 
-            && InputManager.GetInstance().GetSubmitPressed())
+            && InputManager.Instance.GetSubmitPressed())
         {
             ContinueStory();
         }
@@ -229,7 +224,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in line.ToCharArray())
         {
             // if the submit button is pressed, finish up displaying the line right away
-            if (InputManager.GetInstance().GetSubmitPressed()) 
+            if (InputManager.Instance.GetSubmitPressed()) 
             {
                 dialogueText.maxVisibleCharacters = line.Length;
                 break;
@@ -442,7 +437,7 @@ public class DialogueManager : MonoBehaviour
         {
             currentStory.ChooseChoiceIndex(choiceIndex);
             // NOTE: The below two lines were added to fix a bug after the Youtube video was made
-            InputManager.GetInstance().RegisterSubmitPressed(); // this is specific to my InputManager script
+            InputManager.Instance.RegisterSubmitPressed(); // this is specific to my InputManager script
             ContinueStory();
         }
     }

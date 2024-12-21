@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        if (DialogueManager.Instance.dialogueIsPlaying)
         {
             return;
         }
@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Accelerate / decelerate
         // inputAxis = Input.GetAxis("Horizontal");
-        inputAxis = InputManager.GetInstance().GetMoveDirection();
+        inputAxis = InputManager.Instance.GetMoveDirection();
         
         // make player move with acceleration and deceleration periods
         // velocity.x = Mathf.MoveTowards(velocity.x, inputAxis.x * moveSpeed, moveSpeed * Time.deltaTime);
@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Perform jump
         // if (Input.GetButtonDown("Jump"))
-        jumpPressed = InputManager.GetInstance().GetJumpPressed();
+        jumpPressed = InputManager.Instance.GetJumpPressed();
         
         // TODO: at the moment the jump height is fixed, if we want to change it to make it higher
         // according to how long player keeps the jump key hold down, we have to implement it
@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Check if falling
         // bool falling = velocity.y < 0f || !Input.GetButton("Jump");
-        bool falling = velocity.y < 0f || !InputManager.GetInstance().GetJumpPressed();
+        bool falling = velocity.y < 0f || !InputManager.Instance.GetJumpPressed();
         float multiplier = falling ? 2f : 1f;
 
         // Apply gravity and terminal velocity

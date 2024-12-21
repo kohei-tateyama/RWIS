@@ -25,12 +25,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        // Subscribe to the event
-        DialogueManager.GetInstance().OnSocialValueChangedEvent += OnSocialValueChanged;
-
-        // Initialize the social bar with the current social value
-        int initialSocialValue = DialogueManager.GetInstance().socialMeterValue;
-        // UpdateSocialBar(initialSocialValue);
+        // Subscribe to the event to get updates when SocialMeterValue changes
+        DialogueManager.Instance.OnSocialValueChangedEvent += OnSocialValueChanged;
     }
 
     public void Hit()
@@ -137,10 +133,7 @@ public class Player : MonoBehaviour
     void OnDestroy()
     {
         // Unsubscribe from the event to prevent memory leaks
-        if (DialogueManager.GetInstance() != null)
-        {
-            DialogueManager.GetInstance().OnSocialValueChangedEvent -= OnSocialValueChanged;
-        }
+        DialogueManager.Instance.OnSocialValueChangedEvent -= OnSocialValueChanged;
     }
 
 }
