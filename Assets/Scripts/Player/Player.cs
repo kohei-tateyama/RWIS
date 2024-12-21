@@ -23,6 +23,16 @@ public class Player : MonoBehaviour
         activeRenderer = smallRenderer;
     }
 
+    private void Start()
+    {
+        // Subscribe to the event
+        DialogueManager.GetInstance().OnSocialValueChangedEvent += OnSocialValueChanged;
+
+        // Initialize the social bar with the current social value
+        int initialSocialValue = DialogueManager.GetInstance().socialMeterValue;
+        // UpdateSocialBar(initialSocialValue);
+    }
+
     public void Hit()
     {
         if (!dead && !starpower)
@@ -116,6 +126,21 @@ public class Player : MonoBehaviour
 
         activeRenderer.spriteRenderer.color = Color.white;
         starpower = false;
+    }
+
+    void OnSocialValueChanged(int newSocialMeterValue)
+    {
+        Debug.Log("FROM PLAYER: social meter value changed: " + newSocialMeterValue);
+        // Add here logic for changing UI social bar
+    }
+
+    void OnDestroy()
+    {
+        // Unsubscribe from the event to prevent memory leaks
+        if (DialogueManager.GetInstance() != null)
+        {
+            DialogueManager.GetInstance().OnSocialValueChangedEvent -= OnSocialValueChanged;
+        }
     }
 
 }
