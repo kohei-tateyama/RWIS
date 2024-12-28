@@ -1,19 +1,19 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class QuitMenu : MonoBehaviour
+
+public class NewGameMenu : MonoBehaviour
 {
-    [SerializeField]
-    GameObject parentMenu;
+    [SerializeField] private GameObject parentMenu;
 
-    public void Yes()
+    public void YesButton()
     {
-        Application.Quit();
+        SceneManager.LoadScene("1-1");
     }
 
-    public void No()
+    public void NoButton()
     {
         gameObject.SetActive(false);
-
         parentMenu.SetActive(true);
     }
 

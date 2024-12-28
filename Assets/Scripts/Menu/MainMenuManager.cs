@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject quitMenu;
+    [SerializeField] private GameObject newGameMenu;
 
 
 
@@ -20,7 +19,7 @@ public class MainMenuManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Settings Menu is not assigned in the Inspector!");
+            Debug.LogError("Settings Menu is not assigned in the Inspector!");
         }
 
         if (quitMenu != null)
@@ -29,14 +28,25 @@ public class MainMenuManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Quit Menu is not assigned in the Inspector!");
+            Debug.LogError("Quit Menu is not assigned in the Inspector!");
+        }
+
+        if (newGameMenu != null)
+        {
+            newGameMenu.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("New Game Menu is not assigned in the Inspector!");
         }
 
     }
 
-    public void PlayGame()
+    public void PlayNewGame()
     {
-        SceneManager.LoadScene("1-1");
+        //TODO: if no save data, just load game
+        newGameMenu.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     public void LoadGame()
