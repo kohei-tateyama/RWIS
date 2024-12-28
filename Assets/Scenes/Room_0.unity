@@ -1664,6 +1664,8 @@ MonoBehaviour:
   - {fileID: 1322851810}
   - {fileID: 984340596}
   - {fileID: 1591952762}
+  inputPanel: {fileID: 0}
+  nameInputField: {fileID: 0}
 --- !u!1001 &614562224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7365,7 +7367,7 @@ PrefabInstance:
     - target: {fileID: 7192600388682462656, guid: 122e5b557caeb4316945eae1c765059f, type: 3}
       propertyPath: inkJSON
       value: 
-      objectReference: {fileID: 4900000, guid: 4d762b1d0f2b04197b2d6764e9329311, type: 3}
+      objectReference: {fileID: 4900000, guid: 1dcfe8ea9ec1440a98765547ba5f905f, type: 3}
     - target: {fileID: 7192600388682462656, guid: 122e5b557caeb4316945eae1c765059f, type: 3}
       propertyPath: interactionButton
       value: 

@@ -27,19 +27,20 @@ public class Player : MonoBehaviour
         socialMeter.SetMaxHealth(maxHealth);
         currentBattery = maxBattery;
         batteryBar.SetMaxBattery(maxBattery);
+
+        // Subscribe to the event to get updates when SocialMeterValue changes
+        DialogueManager.Instance.OnSocialValueChangedEvent += OnSocialValueChanged;
     }
 
     private void Update(){
         if (currentHealth <= 0){
             Death();
         }
-        if (InputManager.GetInstance().GetSubmitPressed()){
-            SocialPoints(-20);
-        }
-        if (InputManager.GetInstance().GetInteractPressed()){
-            // SocialPoints(20);
-            Battery(-20);
-        }
+        
+        // if (InputManager.Instance.GetInteractPressed()){
+        //     // SocialPoints(20);
+        //     Battery(-20);
+        // }
     }
 
     private void SocialPoints(int points){
@@ -60,7 +61,6 @@ public class Player : MonoBehaviour
         activeRenderer = smallRenderer;
     }
 
-
     public void Death()
     {
         smallRenderer.enabled = false;
@@ -71,5 +71,16 @@ public class Player : MonoBehaviour
     }
 
 
+
+    void OnSocialValueChanged(int newSocialMeterValue)
+    {
+        SocialPoints(-20);
+    }
+
+    void OnDestroy()
+    {
+        // Unsubscribe from the event to prevent memory leaks
+        DialogueManager.Instance.OnSocialValueChangedEvent -= OnSocialValueChanged;
+    }
 
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -25,6 +26,14 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 
+    [Header("Input Panel")]
+    [SerializeField] private GameObject inputPanel;
+    [SerializeField] private TMP_InputField nameInputField;
+    private bool inputRequired;
+
+    public int socialMeterValue { get; private set; }
+    public event Action<int> OnSocialValueChangedEvent;
+
     // [Header("Audio")]
     // [SerializeField] private DialogueAudioInfoSO defaultAudioInfo;
     // [SerializeField] private DialogueAudioInfoSO[] audioInfos;
@@ -33,6 +42,8 @@ public class DialogueManager : MonoBehaviour
     // private Dictionary<string, DialogueAudioInfoSO> audioInfoDictionary;
     // private AudioSource audioSource;
 
+    public static DialogueManager Instance { get; private set; }
+
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
 
@@ -40,11 +51,10 @@ public class DialogueManager : MonoBehaviour
 
     private Coroutine displayLineCoroutine;
 
-    private static DialogueManager instance;
-
     private const string SPEAKER_TAG = "speaker";
     private const string PORTRAIT_TAG = "portrait";
     private const string LAYOUT_TAG = "layout";
+    private const string INPUT_REQ_TAG = "input_required";
     // private const string AUDIO_TAG = "audio";
 
     private DialogueVariables dialogueVariables;
@@ -52,11 +62,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake() 
     {
-        if (instance != null)
-        {
-            Debug.LogWarning("Found more than one Dialogue Manager in the scene");
-        }
-        instance = this;
+        Instance = this;
 
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
         inkExternalFunctions = new InkExternalFunctions();
@@ -65,15 +71,12 @@ public class DialogueManager : MonoBehaviour
         // currentAudioInfo = defaultAudioInfo;
     }
 
-    public static DialogueManager GetInstance() 
-    {
-        return instance;
-    }
-
     private void Start() 
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
+        inputPanel.SetActive(false);
+        inputRequired = false;
 
         // get the layout animator
         layoutAnimator = dialoguePanel.GetComponent<Animator>();
@@ -126,7 +129,7 @@ public class DialogueManager : MonoBehaviour
         // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
         if (canContinueToNextLine 
             && currentStory.currentChoices.Count == 0 
-            && InputManager.GetInstance().GetSubmitPressed())
+            && InputManager.Instance.GetSubmitPressed())
         {
             ContinueStory();
         }
@@ -146,6 +149,9 @@ public class DialogueManager : MonoBehaviour
         portraitAnimator.Play("default");
         layoutAnimator.Play("right");
 
+        // Observe changes to 'social_meter'
+        currentStory.ObserveVariable("social_meter", OnSocialVariableChanged);
+
         ContinueStory();
     }
 
@@ -160,6 +166,8 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
 
+        currentStory.RemoveVariableObserver(OnSocialVariableChanged, "social_meter");
+
         // go back to default audio
         // SetCurrentAudioInfo(defaultAudioInfo.id);
     }
@@ -173,7 +181,9 @@ public class DialogueManager : MonoBehaviour
             {
                 StopCoroutine(displayLineCoroutine);
             }
+            
             string nextLine = currentStory.Continue();
+            
             // handle case where the last line is an external function
             if (nextLine.Equals("") && !currentStory.canContinue)
             {
@@ -210,7 +220,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in line.ToCharArray())
         {
             // if the submit button is pressed, finish up displaying the line right away
-            if (InputManager.GetInstance().GetSubmitPressed()) 
+            if (InputManager.Instance.GetSubmitPressed()) 
             {
                 dialogueText.maxVisibleCharacters = line.Length;
                 break;
@@ -237,6 +247,7 @@ public class DialogueManager : MonoBehaviour
         // actions to take after the entire line has finished displaying
         continueIcon.SetActive(true);
         DisplayChoices();
+        DisplayInputField();
 
         canContinueToNextLine = true;
     }
@@ -331,13 +342,52 @@ public class DialogueManager : MonoBehaviour
                     layoutAnimator.Play(tagValue);
                     break;
                 // case AUDIO_TAG: 
-                //     SetCurrentAudioInfo(tagValue);
-                    // break;
+                //      SetCurrentAudioInfo(tagValue);
+                //      break;
+                case INPUT_REQ_TAG:
+                    inputRequired = true;
+                    break;
                 default:
                     Debug.LogWarning("Tag came in but is not currently being handled: " + tag);
                     break;
             }
         }
+    }
+
+    private void DisplayInputField()
+    {
+        if (inputRequired)
+        {
+            inputPanel.SetActive(true);
+            StartCoroutine(ActivateInputField());
+        }
+    }
+
+    private IEnumerator ActivateInputField()
+    {
+        // Wait until the end of the frame
+        yield return new WaitForEndOfFrame();
+
+        // Activate the input field
+        nameInputField.ActivateInputField();
+    }
+
+    public void OnInputSubmitted()
+    {
+        // Get input from the player
+        string playerInput = nameInputField.text;
+
+        // Assign it back to the Ink story
+        currentStory.variablesState["player_input"] = playerInput;
+
+        // Deactivate and clear the input field and panel
+        nameInputField.DeactivateInputField();
+        nameInputField.text = "";
+        inputPanel.SetActive(false);
+        inputRequired = false;
+
+        // Continue the story
+        ContinueStory();
     }
 
     private void DisplayChoices() 
@@ -365,16 +415,16 @@ public class DialogueManager : MonoBehaviour
             choices[i].gameObject.SetActive(false);
         }
 
-        StartCoroutine(SelectFirstChoice());
+        StartCoroutine(SelectGameObject(choices[0].gameObject));
     }
 
-    private IEnumerator SelectFirstChoice() 
+    private IEnumerator SelectGameObject(GameObject gameObject)
     {
         // Event System requires we clear it first, then wait
         // for at least one frame before we set the current selected object.
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+        EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
     public void MakeChoice(int choiceIndex)
@@ -383,9 +433,17 @@ public class DialogueManager : MonoBehaviour
         {
             currentStory.ChooseChoiceIndex(choiceIndex);
             // NOTE: The below two lines were added to fix a bug after the Youtube video was made
-            InputManager.GetInstance().RegisterSubmitPressed(); // this is specific to my InputManager script
+            InputManager.Instance.RegisterSubmitPressed(); // this is specific to my InputManager script
             ContinueStory();
         }
+    }
+
+    private void OnSocialVariableChanged(string variableName, object newValue)
+    {
+        socialMeterValue = Convert.ToInt32(newValue);
+        
+        // Notify other scripts
+        OnSocialValueChangedEvent?.Invoke(socialMeterValue);
     }
 
     public Ink.Runtime.Object GetVariableState(string variableName) 
