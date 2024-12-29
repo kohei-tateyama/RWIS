@@ -623,6 +623,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6441841789286464594, guid: 962898cbc3d9ed649b7a54a9a408f125, type: 3}
   m_PrefabInstance: {fileID: 1292940516}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &79908161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3372775562214192933, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+  m_PrefabInstance: {fileID: 1431533224}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &92164682
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +659,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 693792388}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &92164684
 MonoBehaviour:
@@ -3393,6 +3398,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ade34e0a-f3eb-4fb6-aaa4-415cb6f4cf6b
     m_ActionName: Gameplay/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 599199561}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: PauseButtonPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bb1fa562-46d3-45e0-83d4-eed6cae75fb1
+    m_ActionName: Gameplay/Pause[/Keyboard/p,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -4240,9 +4261,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1579664536}
+  - {fileID: 1927775612}
   - {fileID: 1120297575}
   - {fileID: 92164683}
-  - {fileID: 1927775612}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8278,6 +8299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed496db6fa6284811b69c117017704b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 79908161}
+  touchInputPanel: {fileID: 1927775611}
 --- !u!1 &1305583366
 GameObject:
   m_ObjectHideFlags: 0
@@ -9448,7 +9471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3372775562214192934, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3372775562214192934, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13080,7 +13103,7 @@ RectTransform:
   - {fileID: 1346055301}
   - {fileID: 1039284635}
   m_Father: {fileID: 693792388}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}

@@ -73,7 +73,6 @@ public class InputManager : MonoBehaviour
         if (context.performed)
         {
             pausePressed = true;
-            Debug.Log("Pause Pressed");
         }
         else if (context.canceled)
         {
