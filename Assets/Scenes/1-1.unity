@@ -3760,11 +3760,10 @@ MonoBehaviour:
   - {fileID: 1322851810}
   - {fileID: 984340596}
   - {fileID: 1591952762}
-  audioSource: {fileID: 0}
-  audioClipsPath: Audio/DialogueClips
-  - {fileID: 1943750775}
   inputPanel: {fileID: 1580180256}
   nameInputField: {fileID: 1513249981}
+  audioSource: {fileID: 0}
+  audioClipsPath: Audio/DialogueClips
 --- !u!1001 &614562224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7082,7 +7081,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -39.2, y: 312.1}
+  m_AnchoredPosition: {x: -39.19995, y: 312.1}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1039284636

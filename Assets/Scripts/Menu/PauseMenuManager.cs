@@ -30,7 +30,7 @@ public class PauseMenuManager : MonoBehaviour
     
     void Update()
     {
-        if (InputManager.GetInstance().GetPausePressed())
+        if (InputManager.Instance.GetPausePressed())
         {
             isPauseMenuOn = true;
             pauseMenu.SetActive(true);

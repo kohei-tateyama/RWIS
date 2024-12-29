@@ -1,3 +1,4 @@
+VAR social_meter = 0
 -> start
 
 === start ===
@@ -53,5 +54,5 @@ Agent 2: Just get on board.
 
 // ~ PlayMontage("travel_montage")
 // ~ EndScene
-
+~ playEmote("exclamation")
 -> END
