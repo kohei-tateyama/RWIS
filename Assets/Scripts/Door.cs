@@ -25,14 +25,14 @@ public class Door : MonoBehaviour
 
     private void Update() 
     {
-        if (playerInRange && !DialogueManager.GetInstance().dialogueIsPlaying) 
+        if (playerInRange && !DialogueManager.Instance.dialogueIsPlaying) 
         {
             glowSprite.SetActive(true);
 
             // blink between original and highlight color
             float t = Mathf.PingPong(Time.time * blinkSpeed, 1f);
             spriteRenderer.color = Color.Lerp(originalColor, highlightColor, t);            
-            if (InputManager.GetInstance().GetInteractPressed()) 
+            if (InputManager.Instance.GetInteractPressed()) 
             {
                 // Change scene / enter room
                 GameManager.Instance.LoadRoom(roomName);

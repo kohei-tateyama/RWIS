@@ -22,12 +22,17 @@ public class PlayerMovement : MonoBehaviour
     public bool running => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis.x) > 0.25f;
     public bool sliding => (inputAxis.x > 0f && velocity.x < 0f) || (inputAxis.x < 0f && velocity.x > 0f);
     public bool falling => velocity.y < 0f && !grounded;
+    private RectTransform rectTransformSocialMeter,rectTransformBatteryBar;
 
     private void Awake()
     {
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<Collider2D>();
+        Transform childObjectBattery = transform.Find("Canvas Battery");
+        Transform childObjectSocialMeter = transform.Find("Canvas SM");
+        rectTransformBatteryBar = childObjectBattery.GetComponent<RectTransform>();
+        rectTransformSocialMeter = childObjectSocialMeter.GetComponent<RectTransform>();
     }
 
     private void OnEnable()
@@ -48,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (DialogueManager.GetInstance().dialogueIsPlaying || PauseMenuManager.GetInstance().isPauseMenuOn)
+        if (DialogueManager.Instance.dialogueIsPlaying || PauseMenuManager.GetInstance().isPauseMenuOn)
         {
             return;
         }
@@ -82,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Accelerate / decelerate
         // inputAxis = Input.GetAxis("Horizontal");
-        inputAxis = InputManager.GetInstance().GetMoveDirection();
+        inputAxis = InputManager.Instance.GetMoveDirection();
         
         // make player move with acceleration and deceleration periods
         // velocity.x = Mathf.MoveTowards(velocity.x, inputAxis.x * moveSpeed, moveSpeed * Time.deltaTime);
@@ -98,8 +103,13 @@ public class PlayerMovement : MonoBehaviour
         // Flip sprite to face direction
         if (velocity.x > 0f) {
             transform.eulerAngles = Vector3.zero;
+            rectTransformBatteryBar.eulerAngles = Vector3.zero;
+            rectTransformSocialMeter.eulerAngles = Vector3.zero;
         } else if (velocity.x < 0f) {
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
+            rectTransformBatteryBar.eulerAngles = Vector3.zero;
+            rectTransformSocialMeter.eulerAngles = Vector3.zero;
+
         }
     }
 
@@ -111,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Perform jump
         // if (Input.GetButtonDown("Jump"))
-        jumpPressed = InputManager.GetInstance().GetJumpPressed();
+        jumpPressed = InputManager.Instance.GetJumpPressed();
         
         // TODO: at the moment the jump height is fixed, if we want to change it to make it higher
         // according to how long player keeps the jump key hold down, we have to implement it
@@ -126,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Check if falling
         // bool falling = velocity.y < 0f || !Input.GetButton("Jump");
-        bool falling = velocity.y < 0f || !InputManager.GetInstance().GetJumpPressed();
+        bool falling = velocity.y < 0f || !InputManager.Instance.GetJumpPressed();
         float multiplier = falling ? 2f : 1f;
 
         // Apply gravity and terminal velocity

@@ -7,7 +7,6 @@ public class PowerUp : MonoBehaviour
         Coin,
         ExtraLife,
         MagicMushroom,
-        Starpower,
     }
 
     public Type type;
@@ -31,13 +30,6 @@ public class PowerUp : MonoBehaviour
                 GameManager.Instance.AddLife();
                 break;
 
-            case Type.MagicMushroom:
-                player.Grow();
-                break;
-
-            case Type.Starpower:
-                player.Starpower();
-                break;
         }
 
         Destroy(gameObject);
