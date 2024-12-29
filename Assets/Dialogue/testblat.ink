@@ -2,7 +2,7 @@ INCLUDE globals.ink
 
 VAR isFirstTime = true
 
-Hello there! #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:animal_crossing_mid
+Hello there! #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:yoroshiku
 -> main
 
 === main ===
@@ -29,10 +29,10 @@ Hello there! #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:a
 }
 
 === next_section ===
-- Don't trust him, he's <b><color=\#FF1E35>not</color></b> a real doctor! #speaker:Ms. Yellow #portrait:ms_yellow_neutral #layout:right #audio:animal_crossing_high
+- Don't trust him, he's <b><color=\#FF1E35>not</color></b> a real doctor! #speaker:Ms. Yellow #portrait:ms_yellow_neutral #layout:right #audio:yoroshikugirl
 
 ~ playEmote("question")
-Well, do you have any more questions? #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:animal_crossing_mid
+Well, do you have any more questions? #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:yoroshiku
 + [Yes]
     -> main
 + [No]
