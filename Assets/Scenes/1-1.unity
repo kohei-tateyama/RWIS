@@ -3760,6 +3760,7 @@ MonoBehaviour:
   - {fileID: 1322851810}
   - {fileID: 984340596}
   - {fileID: 1591952762}
+  - {fileID: 1943750775}
   inputPanel: {fileID: 1580180256}
   nameInputField: {fileID: 1513249981}
   audioSource: {fileID: 0}
@@ -14278,7 +14279,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -15528,6 +15529,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 712853453}
     m_Modifications:
+    - target: {fileID: 329339112182160311, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 481021467160599378, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_Material
       value: 
@@ -15608,14 +15613,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mario
       objectReference: {fileID: 0}
+    - target: {fileID: 757320757107811744, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1222442145135012062, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: animationSpeed
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361795245330896943, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3908975041035222098, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4154738115562472945, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4403833374046591550, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -15623,11 +15640,31 @@ PrefabInstance:
     - target: {fileID: 4403833374046591550, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710833528789704605, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154530694903509271, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529797451072159031, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5807276760029766807, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6919125108000364792, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798586808419318663, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8079902729870642855, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -15635,6 +15672,10 @@ PrefabInstance:
     - target: {fileID: 8079902729870642855, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087829123224772905, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8604944187906738167, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: batteryBar

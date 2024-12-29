@@ -74,4 +74,6 @@ Teacher: Today I will...
 
 Teacher: Here are the permission slips for next week's field trip to the mines. Please have your parents sign them and bring them back before the trip.
 
+~ playEmote("exclamation")
+
 -> END

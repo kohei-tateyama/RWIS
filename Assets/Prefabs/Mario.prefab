@@ -199,6 +199,9 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   socialMeter: {fileID: 1064333963061097128}
+  batteryBar: {fileID: 6691765232177760811}
+  maxBattery: 100
+  currentBattery: 0
 --- !u!114 &481021467160599388
 MonoBehaviour:
   m_ObjectHideFlags: 0

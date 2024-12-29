@@ -1,5 +1,6 @@
 INCLUDE globals.ink
 
+VAR social_meter = 0
 VAR isFirstTime = true
 
 Hello there! #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:yoroshiku
