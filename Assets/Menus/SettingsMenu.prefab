@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6744203460008960040}
   m_Layer: 5
-  m_Name: Music Volume
+  m_Name: MusicControlPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ RectTransform:
   m_LocalScale: {x: 1.1262498, y: 1.1262498, z: 1.1262498}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6744203461008971093}
   - {fileID: 6744203461522852448}
+  - {fileID: 6744203461008971093}
   m_Father: {fileID: 6744203460849871158}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -343,7 +343,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -78.5, y: 0}
   m_SizeDelta: {x: -137, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -628,7 +628,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6744203460849871158
 Transform:
   m_ObjectHideFlags: 0
@@ -806,6 +806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6744203461008971093}
   - component: {fileID: 6744203461008971092}
+  - component: {fileID: 7490507510710470440}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -829,7 +830,7 @@ RectTransform:
   - {fileID: 6744203461593372329}
   - {fileID: 6744203460797038925}
   m_Father: {fileID: 6744203460008960040}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -887,6 +888,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7490507510710470440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6744203461008971090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 053016a03cee14548adf22c8ae899cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6744203461130263548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1147,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1285,7 +1298,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -78.5, y: 0}
   m_SizeDelta: {x: -137, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1337,6 +1350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6744203461522852448}
   - component: {fileID: 6744203461522852451}
+  - component: {fileID: 7906023461813520000}
   m_Layer: 5
   m_Name: Toggle
   m_TagString: Untagged
@@ -1359,7 +1373,7 @@ RectTransform:
   - {fileID: 6744203460663842295}
   - {fileID: 6744203461897708708}
   m_Father: {fileID: 6744203460008960040}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1414,6 +1428,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &7906023461813520000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6744203461522852449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa7a63752dbd414ba143d311eb88b88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6744203461593372326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,7 +1758,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public bool pauseMenuIsOn { get; private set; }
+    // public bool pauseMenuIsOn { get; private set; }
     [SerializeField] GameObject settingsMenu;
     [SerializeField] GameObject quitMenu;
 
@@ -14,7 +15,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (settingsMenu != null)
         {
-            pauseMenuIsOn = false;
+            // pauseMenuIsOn = false;
         }
         else
         {
@@ -59,7 +60,7 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
-
+        SceneManager.LoadScene("Main Menu");
     }
     
     public void OpenQuitMenu()
@@ -67,24 +68,5 @@ public class PauseMenu : MonoBehaviour
         gameObject.SetActive(false);
         quitMenu.SetActive(true);
     }
-
-
-    private void DisableAllChildren()
-    {
-        foreach (Transform child in gameObject.transform)
-        {
-            // Disable each child in Parent Object
-            child.gameObject.SetActive(false);
-        }
-    }
-
-    private void ActivateAllChildren()
-    {
-        foreach (Transform child in gameObject.transform)
-        {
-            // Disable each child in Parent Object
-            child.gameObject.SetActive(true);
-        }
-    }
-
+    
 }

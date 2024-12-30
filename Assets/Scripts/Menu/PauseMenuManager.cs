@@ -9,6 +9,8 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject touchInputPanel;
     public bool isPauseMenuOn { get; private set; }
 
+    public bool isGamePaused { get; private set; }
+
     private static PauseMenuManager instance;
 
     private void Awake()
@@ -35,6 +37,7 @@ public class PauseMenuManager : MonoBehaviour
             isPauseMenuOn = true;
             pauseMenu.SetActive(true);
             touchInputPanel.SetActive(false);
+            PauseGameTime();
         
         }
     }
@@ -50,6 +53,19 @@ public class PauseMenuManager : MonoBehaviour
         isPauseMenuOn = false;
         pauseMenu.SetActive(false);
         touchInputPanel.SetActive(true);
+        ResumeGame();
+    }
+
+    void PauseGameTime()
+    {
+        Time.timeScale = 0f; // Freeze time
+        isGamePaused = true;
+    }
+
+    void ResumeGame()
+    {
+        Time.timeScale = 1f; // Resume time
+        isGamePaused = false;
     }
 
 }
