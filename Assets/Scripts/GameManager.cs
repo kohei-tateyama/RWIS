@@ -11,20 +11,81 @@ public class GameManager : MonoBehaviour
     public int lives { get; private set; } = 3;
     public int coins { get; private set; } = 0;
 
+    public Vector2 previousPlayerPosition;
+    public string nextDoorID;
+
     private void Awake()
     {
-        if (Instance != null) {
+        if (Instance != null) 
+        {
             DestroyImmediate(gameObject);
-        } else {
+        } 
+        else 
+        {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            // Subscribe to the sceneLoaded event
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
     }
 
     private void OnDestroy()
     {
         if (Instance == this) {
+            // Unsubscribe from the sceneLoaded event
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+
             Instance = null;
+        }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("loaded scene name: " + scene.name);
+        
+        // Find the player in the scene
+        GameObject player = GameObject.FindWithTag("Player");
+
+        if (player != null)
+        {
+            if (!string.IsNullOrEmpty(nextDoorID))
+            {
+                // Find the door with the matching doorID
+                Door targetDoor = FindDoorByID(nextDoorID);
+                
+
+                if (targetDoor != null)
+                {
+                    Debug.Log("target door name: " + targetDoor.name);
+                    // Set the player's position to the target door's position
+                    player.transform.position = targetDoor.transform.position;
+                }
+                else
+                {
+                    Debug.LogWarning("Target door not found: " + nextDoorID);
+                }
+
+                // Reset nextDoorID after use
+                nextDoorID = null;
+            }
+            else if (previousPlayerPosition != new Vector2(2, 2))
+            {
+                // Return the player to the previous position
+                player.transform.position = previousPlayerPosition;
+
+                // Reset previousPlayerPosition
+                previousPlayerPosition = new Vector2(2, 2);
+            }
+            else
+            {
+                // Default spawn position
+                player.transform.position = new Vector2(2, 2);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Player not found in the scene.");
         }
     }
 
@@ -96,6 +157,20 @@ public class GameManager : MonoBehaviour
     public void AddLife()
     {
         lives++;
+    }
+
+    // Helper method to find a door by its ID
+    private Door FindDoorByID(string doorID)
+    {
+        Door[] doors = FindObjectsOfType<Door>();
+        foreach (Door door in doors)
+        {
+            if (door.doorID == doorID)
+            {
+                return door;
+            }
+        }
+        return null;
     }
 
 }

@@ -3,8 +3,10 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
 
-    [Header("Room name")]
-    [SerializeField] private string roomName;
+    public string roomToLoad;        // The name of the scene/room to load
+    public string doorID;            // Unique identifier for this door
+    public string targetDoorID;      // The doorID of the door in the target scene
+    public bool isEntranceDoor;      // Indicates if this is an entrance door (used when returning)
 
     [Header("Glowing sprite")]
     [SerializeField] private GameObject glowSprite;
@@ -32,10 +34,11 @@ public class Door : MonoBehaviour
             // blink between original and highlight color
             float t = Mathf.PingPong(Time.time * blinkSpeed, 1f);
             spriteRenderer.color = Color.Lerp(originalColor, highlightColor, t);            
+            
             if (InputManager.Instance.GetInteractPressed()) 
             {
                 // Change scene / enter room
-                GameManager.Instance.LoadRoom(roomName);
+                GameManager.Instance.LoadRoom(roomToLoad);
             }
         }
         else 
@@ -44,17 +47,27 @@ public class Door : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider) 
+    private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (collider.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             playerInRange = true;
+
+            if (isEntranceDoor)
+            {
+                // Store the player's current position before entering the door
+                Debug.Log("player position registered: " + gameObject.transform.position);
+                GameManager.Instance.previousPlayerPosition = gameObject.transform.position;
+            }
+
+            // Set the next door ID in the GameManager
+            GameManager.Instance.nextDoorID = targetDoorID;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collider) 
+    private void OnTriggerExit2D(Collider2D other) 
     {
-        if (collider.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             playerInRange = false;
         }
