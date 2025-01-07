@@ -3063,7 +3063,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 6.5, z: -10}
+  m_LocalPosition: {x: 7.83, y: 6.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16131,7 +16131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3611261760737888593, guid: 0724cbeea21c46642b57c4ace196dea7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 107
+      value: 26.98
       objectReference: {fileID: 0}
     - target: {fileID: 3611261760737888593, guid: 0724cbeea21c46642b57c4ace196dea7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16169,9 +16169,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3611261760737888596, guid: 0724cbeea21c46642b57c4ace196dea7, type: 3}
+      propertyPath: speed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3611261760737888598, guid: 0724cbeea21c46642b57c4ace196dea7, type: 3}
       propertyPath: m_Name
       value: Koopa
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611261760737888607, guid: 0724cbeea21c46642b57c4ace196dea7, type: 3}
+      propertyPath: shellSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007958540577334602, guid: 0724cbeea21c46642b57c4ace196dea7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7835674231884971876, guid: 0724cbeea21c46642b57c4ace196dea7, type: 3}
+      propertyPath: m_Size.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457249895797387444, guid: 0724cbeea21c46642b57c4ace196dea7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0724cbeea21c46642b57c4ace196dea7, type: 3}

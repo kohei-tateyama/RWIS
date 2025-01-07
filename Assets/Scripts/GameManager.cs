@@ -38,8 +38,9 @@ public class GameManager : MonoBehaviour
     {
         lives = 3;
         coins = 0;
+        SceneManager.LoadScene($"Hallway");
 
-        LoadLevel(1, 1);
+        // LoadLevel(1, 1);
     }
 
     public void GameOver()
