@@ -29,7 +29,7 @@ public class Pipe : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         var sideSrolling = Camera.main.GetComponent<SideScrollingCamera>();
-        sideSrolling.SetUnderground(connection.position.y < sideSrolling.undergroundThreshold);
+        sideSrolling.SetClassroom(connection.position.y < sideSrolling.classroomThreshold);
 
         if (exitDirection != Vector3.zero)
         {

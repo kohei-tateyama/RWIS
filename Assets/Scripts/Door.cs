@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-
-    [Header("Room name")]
-    [SerializeField] private string roomName;
+    [Header("Target Position")]
+    [SerializeField] private Transform targetPosition; // The location where the player or NPC should move to
 
     [Header("Glowing sprite")]
     [SerializeField] private GameObject glowSprite;
     private SpriteRenderer spriteRenderer;
+    public Transform connection;
     private Color originalColor;
     public Color highlightColor = Color.yellow;
     public float blinkSpeed = 1f;
 
     private bool playerInRange;
 
-    private void Awake() 
+    private void Awake()
     {
         playerInRange = false;
         glowSprite.SetActive(false);
@@ -23,40 +23,57 @@ public class Door : MonoBehaviour
         originalColor = spriteRenderer.color;
     }
 
-    private void Update() 
+    private void Update()
     {
-        if (playerInRange && !DialogueManager.Instance.dialogueIsPlaying) 
+        if (playerInRange && !DialogueManager.Instance.dialogueIsPlaying)
         {
             glowSprite.SetActive(true);
 
-            // blink between original and highlight color
+            // Blink between original and highlight color
             float t = Mathf.PingPong(Time.time * blinkSpeed, 1f);
-            spriteRenderer.color = Color.Lerp(originalColor, highlightColor, t);            
-            if (InputManager.Instance.GetInteractPressed()) 
+            spriteRenderer.color = Color.Lerp(originalColor, highlightColor, t);
+
+            if (InputManager.Instance.GetInteractPressed())
             {
-                // Change scene / enter room
-                GameManager.Instance.LoadRoom(roomName);
+                // Move player or NPC to the target position
+                MovePlayerToTargetPosition();
             }
         }
-        else 
+        else
         {
             glowSprite.SetActive(false);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collider) 
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.CompareTag("Player"))
         {
             playerInRange = true;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collider) 
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+        if (collider.gameObject.CompareTag("Player"))
         {
             playerInRange = false;
+        }
+    }
+
+    private void MovePlayerToTargetPosition()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null && targetPosition != null)
+        {
+            // Move the player to the target position
+            player.transform.position = targetPosition.position - new Vector3(0f, 1.5f, 0f);
+            var sideSrolling = Camera.main.GetComponent<SideScrollingCamera>();
+            sideSrolling.MoveCharacter(targetPosition.position.y);
+        }
+        else
+        {
+            Debug.LogWarning("Player or target position is missing!");
         }
     }
 }

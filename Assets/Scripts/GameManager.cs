@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     {
         lives = 3;
         coins = 0;
-        SceneManager.LoadScene($"Hallway");
+        SceneManager.LoadScene($"AllCombined");
 
         // LoadLevel(1, 1);
     }
