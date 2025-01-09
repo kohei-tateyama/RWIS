@@ -110,6 +110,12 @@ public class InputManager : MonoBehaviour
         return result;
     }
 
+    public bool GetInteractHeld()
+    {
+        // Returns the current state without resetting it
+        return interactPressed;
+    }
+    
     public bool GetPausePressed() 
     {
         bool result = pausePressed;
