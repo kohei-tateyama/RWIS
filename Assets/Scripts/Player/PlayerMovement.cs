@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     public bool falling => velocity.y < 0f && !grounded;
     private RectTransform rectTransformSocialMeter,rectTransformBatteryBar;
 
+
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -86,12 +88,8 @@ public class PlayerMovement : MonoBehaviour
     private void HorizontalMovement()
     {
         // Accelerate / decelerate
-        // inputAxis = Input.GetAxis("Horizontal");
         inputAxis = InputManager.Instance.GetMoveDirection();
-        
-        // make player move with acceleration and deceleration periods
-        // velocity.x = Mathf.MoveTowards(velocity.x, inputAxis.x * moveSpeed, moveSpeed * Time.deltaTime);
-        
+    
         // make player move at constant speed
         velocity.x = inputAxis.x * moveSpeed;
 
@@ -109,7 +107,6 @@ public class PlayerMovement : MonoBehaviour
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
             rectTransformBatteryBar.eulerAngles = Vector3.zero;
             rectTransformSocialMeter.eulerAngles = Vector3.zero;
-
         }
     }
 

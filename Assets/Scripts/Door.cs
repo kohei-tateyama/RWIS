@@ -3,10 +3,11 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [Header("Target Position")]
-    [SerializeField] private Transform targetPosition; // The location where the player or NPC should move to
+    [SerializeField] private Transform targetPosition;
 
     [Header("Glowing sprite")]
     [SerializeField] private GameObject glowSprite;
+    
     private SpriteRenderer spriteRenderer;
     public Transform connection;
     private Color originalColor;
@@ -67,7 +68,7 @@ public class Door : MonoBehaviour
         if (player != null && targetPosition != null)
         {
             // Move the player to the target position
-            player.transform.position = targetPosition.position - new Vector3(0f, 1.5f, 0f);
+            player.transform.position = targetPosition.position + new Vector3(0f, -1.5f, 0f);
             var sideSrolling = Camera.main.GetComponent<SideScrollingCamera>();
             sideSrolling.MoveCharacter(targetPosition.position.y);
         }
