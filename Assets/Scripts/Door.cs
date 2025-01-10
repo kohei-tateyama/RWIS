@@ -2,11 +2,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private GameObject touchInputPanel;
-    [SerializeField] private AnimatedSpriteHome animatedSpriteHome;
-    [SerializeField] private SideScrollingCamera sideScrollingCamera;
     [Header("Target Position")]
-
     [SerializeField] private Transform targetPosition;
 
     [Header("Glowing sprite")]
@@ -19,8 +15,6 @@ public class Door : MonoBehaviour
     public float blinkSpeed = 1f;
 
     private bool playerInRange;
-    public bool shouldAnimate = false;
-    public bool blockMovement = false;
 
     private void Awake()
     {
@@ -30,48 +24,21 @@ public class Door : MonoBehaviour
         originalColor = spriteRenderer.color;
     }
 
-    public void Update()
+    private void Update()
     {
         if (playerInRange && !DialogueManager.Instance.dialogueIsPlaying)
         {
             glowSprite.SetActive(true);
 
-
-            bool isInteractButtonPressed = InputManager.Instance.GetInteractPressed();
-
-
             // Blink between original and highlight color
             float t = Mathf.PingPong(Time.time * blinkSpeed, 1f);
             spriteRenderer.color = Color.Lerp(originalColor, highlightColor, t);
-            if (isInteractButtonPressed && targetPosition.position.y > sideScrollingCamera.homeThreshold)
-            {   
-                Debug.Log("Enter Home");
-                // Move player or NPC to the target position
-                MovePlayerToTargetPosition();
-                animatedSpriteHome.frame = animatedSpriteHome.sprites.Length - 1;
-                animatedSpriteHome.InvokeRepeating("ExitDoor", 0f, animatedSpriteHome.framerate);
-            }
-            else if (isInteractButtonPressed && 
-                    (targetPosition.position.y < sideScrollingCamera.teachersRoomThreshold && targetPosition.position.y > sideScrollingCamera.classroomThreshold))
-            {
-                Debug.Log("Enter Hallway");
-                // Move player or NPC to the target position
-                touchInputPanel.SetActive(false);
-                animatedSpriteHome.frame = 0;
-                animatedSpriteHome.InvokeRepeating("EnterDoor", 0f, animatedSpriteHome.framerate);
-                // touchInputPanel.SetActive(true);
 
-                // MovePlayerToTargetPosition();
-            }
-            else if (isInteractButtonPressed)
+            if (InputManager.Instance.GetInteractPressed())
             {
-                Debug.Log("Enter Classroom");
+                // Move player or NPC to the target position
                 MovePlayerToTargetPosition();
             }
-            // if(InputManager.Instance.GetInteractPressed())
-            // {
-            //     MovePlayerToTargetPosition();
-            // }
         }
         else
         {
@@ -95,7 +62,7 @@ public class Door : MonoBehaviour
         }
     }
 
-    public void MovePlayerToTargetPosition()
+    private void MovePlayerToTargetPosition()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null && targetPosition != null)

@@ -2298,13 +2298,18 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.23, y: 4.5, z: -10}
+  m_LocalPosition: {x: 55.82, y: 4.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &526369652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7847667112437986219, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
+  m_PrefabInstance: {fileID: 1100955542878025499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &533268808
 GameObject:
   m_ObjectHideFlags: 0
@@ -5754,16 +5759,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a3f0c4b436445738bda45bd89ead12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchInputPanel: {fileID: 0}
-  animatedSpriteHome: {fileID: 0}
-  sideScrollingCamera: {fileID: 0}
   targetPosition: {fileID: 40681626}
   glowSprite: {fileID: 1725872768}
   connection: {fileID: 40681626}
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   blinkSpeed: 1
-  shouldAnimate: 0
-  blockMovement: 0
 --- !u!61 &1241484968
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7082,6 +7082,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1 &1479751412 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5856313177290942026, guid: 14325a9a808594cc0b23c690bb295490, type: 3}
+  m_PrefabInstance: {fileID: 5856313178256107072}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1490442873
 GameObject:
   m_ObjectHideFlags: 0
@@ -8572,6 +8577,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1755780428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5856313177652736378, guid: 14325a9a808594cc0b23c690bb295490, type: 3}
+  m_PrefabInstance: {fileID: 5856313178256107072}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1755780432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755780428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538f8bf5398e3432987a57fb0e864be5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchInputPanel: {fileID: 1927775611}
+  animatedSpriteHome: {fileID: 1862964934}
+  animatedSpriteHallway: {fileID: 2114526068}
+  sideScrollingCamera: {fileID: 519420030}
+  targetPosition: {fileID: 1153413862}
+  glowSprite: {fileID: 1479751412}
+  connection: {fileID: 1153413862}
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  blinkSpeed: 1
+  shouldAnimate: 0
+  blockMovement: 0
 --- !u!1 &1769890431
 GameObject:
   m_ObjectHideFlags: 0
@@ -8720,7 +8753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6133a8e4b2f458d872bc45371a08ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 1987114370}
+  door: {fileID: 0}
   touchInputPanel: {fileID: 1927775611}
   trackedObject: {fileID: 168128582}
   homeHeight: 0
@@ -9635,17 +9668,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16, y: 8}
   m_EdgeRadius: 0
---- !u!114 &1987114370 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5844030285001662454, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
+--- !u!1 &1987114368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5695027020106282838, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
   m_PrefabInstance: {fileID: 1100955542878025499}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &1987114372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987114368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a3f0c4b436445738bda45bd89ead12, type: 3}
+  m_Script: {fileID: 11500000, guid: 538f8bf5398e3432987a57fb0e864be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchInputPanel: {fileID: 1927775611}
+  animatedSpriteHome: {fileID: 1862964934}
+  animatedSpriteHallway: {fileID: 2114526068}
+  sideScrollingCamera: {fileID: 519420030}
+  targetPosition: {fileID: 1651580556}
+  glowSprite: {fileID: 526369652}
+  connection: {fileID: 1651580556}
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  blinkSpeed: 1
+  shouldAnimate: 0
+  blockMovement: 0
 --- !u!1 &1993468699
 GameObject:
   m_ObjectHideFlags: 0
@@ -9930,6 +9980,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2114526066 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5856313178754250955, guid: 14325a9a808594cc0b23c690bb295490, type: 3}
+  m_PrefabInstance: {fileID: 5856313178256107072}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2114526068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114526066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6133a8e4b2f458d872bc45371a08ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  touchInputPanel: {fileID: 1927775611}
+  trackedObject: {fileID: 168128582}
+  homeHeight: 0
+  homeThreshold: 0
+  classroomHeight: 0
+  classroomThreshold: 0
+  sprites:
+  - {fileID: 21300000, guid: 4e947b2eb8ded490788eee54cb43b89e, type: 3}
+  - {fileID: 21300000, guid: fd30e22ec304746949af8af8386089ad, type: 3}
+  - {fileID: 21300000, guid: 2a48627bdeccb4290b81b69b259afb30, type: 3}
+  - {fileID: 21300000, guid: 6dd4f5b0780ea473e84c44dd42025cdd, type: 3}
+  - {fileID: 21300000, guid: b3fea960c2ff845d69901392cc1c79d6, type: 3}
+  - {fileID: 21300000, guid: c28f6241c992043a08e9e20f96eec79c, type: 3}
+  - {fileID: 21300000, guid: 96fbe5e989ab34895a7ebb9ca7a6db67, type: 3}
+  - {fileID: 21300000, guid: 63dd81b5f39a7488dbc17e515468d6ff, type: 3}
+  - {fileID: 21300000, guid: 3ed0fbd7bc0c04e2da129fa2464f18a8, type: 3}
+  - {fileID: 21300000, guid: 66f87ee860c884a81aa1a752adf72d80, type: 3}
+  - {fileID: 21300000, guid: cb777fa3263df4a10a21eaa328079114, type: 3}
+  - {fileID: 21300000, guid: 5ae34ec60318143908011e9fcdfb67d4, type: 3}
+  - {fileID: 21300000, guid: faf131644a6e74a148afd8650e0cadca, type: 3}
+  - {fileID: 21300000, guid: d60824185467f4e06b55a3bb46eb8c66, type: 3}
+  - {fileID: 21300000, guid: 929e32f16cae14c199bde1d179238a25, type: 3}
+  - {fileID: 21300000, guid: f89cbe666121d4e58bb3a4e595e2b729, type: 3}
+  - {fileID: 21300000, guid: f98875d91ed3f459da0e00744f2064a5, type: 3}
+  - {fileID: 21300000, guid: eba6fd3ce451c40f3a8229947a42fcbe, type: 3}
+  - {fileID: 21300000, guid: 5c8669ac8def24c5b9b2e8a5da5fd3a3, type: 3}
+  - {fileID: 21300000, guid: a1adec4e5cad747ba904c6d62145a3d2, type: 3}
+  - {fileID: 21300000, guid: dd3cf8a3686b84b639e5b7c506722ece, type: 3}
+  - {fileID: 21300000, guid: 414bda5ef343e4f40b0b3869f70bd309, type: 3}
+  - {fileID: 21300000, guid: bb2ccbd1b905641cc8f40d539728317c, type: 3}
+  - {fileID: 21300000, guid: 151aaf65277c7431ab3a992cc9c6a43e, type: 3}
+  - {fileID: 21300000, guid: f7239db7f17354a7aa6a9d835c3fd6ba, type: 3}
+  - {fileID: 21300000, guid: 3c22b9286be084efc834c7560279fae4, type: 3}
+  - {fileID: 21300000, guid: 32315cfa0c8014278983acaf2c3d1201, type: 3}
+  - {fileID: 21300000, guid: ba459cb4f94214a0a9fa068f44dda0a3, type: 3}
+  - {fileID: 21300000, guid: 11029e07e52c2407c99f4de87eed61f9, type: 3}
+  - {fileID: 21300000, guid: 857757b3ce13a45f98a75a631bf2811a, type: 3}
+  framerate: 0.07
+  frame: 0
 --- !u!1001 &2129866373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10256,10 +10363,10 @@ PrefabInstance:
     - target: {fileID: 481021467160599388, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: door
       value: 
-      objectReference: {fileID: 1987114370}
+      objectReference: {fileID: 0}
     - target: {fileID: 481021467160599388, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: moveSpeed
-      value: 25
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 481021467160599388, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: acceleration
@@ -10275,7 +10382,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 481021467160599389, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.8
+      value: 51.97
       objectReference: {fileID: 0}
     - target: {fileID: 481021467160599389, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10571,6 +10678,10 @@ PrefabInstance:
       propertyPath: sideScrollingCamera
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 5844030285001662454, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
+      propertyPath: animatedSpriteHallway
+      value: 
+      objectReference: {fileID: 2114526068}
     - target: {fileID: 7433351405259538505, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.74
@@ -10599,7 +10710,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.32
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5844030285001662454, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
 --- !u!1001 &1357798868878036310
 PrefabInstance:
@@ -10742,6 +10854,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1153413862}
     - target: {fileID: 5856313177652736380, guid: 14325a9a808594cc0b23c690bb295490, type: 3}
+      propertyPath: touchInputPanel
+      value: 
+      objectReference: {fileID: 1927775611}
+    - target: {fileID: 5856313177652736380, guid: 14325a9a808594cc0b23c690bb295490, type: 3}
       propertyPath: animatedSpriteHome
       value: 
       objectReference: {fileID: 1862964934}
@@ -10749,6 +10865,10 @@ PrefabInstance:
       propertyPath: sideScrollingCamera
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 5856313177652736380, guid: 14325a9a808594cc0b23c690bb295490, type: 3}
+      propertyPath: animatedSpriteHallway
+      value: 
+      objectReference: {fileID: 2114526068}
     - target: {fileID: 5856313178754250955, guid: 14325a9a808594cc0b23c690bb295490, type: 3}
       propertyPath: m_Name
       value: Door_to_home
@@ -10805,5 +10925,6 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1609505275
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5856313177652736380, guid: 14325a9a808594cc0b23c690bb295490, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 14325a9a808594cc0b23c690bb295490, type: 3}

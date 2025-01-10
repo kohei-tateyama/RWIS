@@ -44,8 +44,6 @@ public class AnimatedSpriteHome : MonoBehaviour
         {
             // Stop the repeating invocation once the animation completes
             CancelInvoke("EnterDoor");
-            door.MovePlayerToTargetPosition();
-            touchInputPanel.SetActive(true);
 
         }
     }
