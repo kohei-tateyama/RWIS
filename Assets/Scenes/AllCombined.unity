@@ -8595,8 +8595,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchInputPanel: {fileID: 1927775611}
-  animatedSpriteHome: {fileID: 1862964934}
-  animatedSpriteHallway: {fileID: 2114526068}
+  OtherDoor: {fileID: 1862964934}
+  HallwayDoor: {fileID: 2114526068}
   sideScrollingCamera: {fileID: 519420030}
   targetPosition: {fileID: 1153413862}
   glowSprite: {fileID: 1479751412}
@@ -8753,7 +8753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6133a8e4b2f458d872bc45371a08ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  door: {fileID: 1987114372}
   touchInputPanel: {fileID: 1927775611}
   trackedObject: {fileID: 168128582}
   homeHeight: 0
@@ -9686,8 +9686,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   touchInputPanel: {fileID: 1927775611}
-  animatedSpriteHome: {fileID: 1862964934}
-  animatedSpriteHallway: {fileID: 2114526068}
+  OtherDoor: {fileID: 1862964934}
+  HallwayDoor: {fileID: 2114526068}
   sideScrollingCamera: {fileID: 519420030}
   targetPosition: {fileID: 1651580556}
   glowSprite: {fileID: 526369652}
@@ -9997,7 +9997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6133a8e4b2f458d872bc45371a08ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  door: {fileID: 1755780432}
   touchInputPanel: {fileID: 1927775611}
   trackedObject: {fileID: 168128582}
   homeHeight: 0

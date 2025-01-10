@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimatedSpriteHome : MonoBehaviour
+public class AnimatedSpriteDoor : MonoBehaviour
 {
-    [SerializeField] private DoorAnimated door;
+    [SerializeField] private Door door;
+    [SerializeField] private GameObject touchInputPanel;
     public Transform trackedObject;
     public float homeHeight;
     public float homeThreshold;

@@ -5,8 +5,8 @@ using UnityEngine;
 public class DoorAnimated : MonoBehaviour
 {
     [SerializeField] private GameObject touchInputPanel;
-    [SerializeField] private AnimatedSpriteHome animatedSpriteHome;
-    [SerializeField] private AnimatedSpriteHome animatedSpriteHallway;
+    [SerializeField] private AnimatedSpriteHome OtherDoor;
+    [SerializeField] private AnimatedSpriteHome HallwayDoor;
     [SerializeField] private SideScrollingCamera sideScrollingCamera;
     [Header("Target Position")]
 
@@ -25,6 +25,7 @@ public class DoorAnimated : MonoBehaviour
     private bool playerInRange;
     public bool shouldAnimate = false;
     public bool blockMovement = false;
+    // private bool isHomeDoor = targetPosition.position.y > sideScrollingCamera.homeThreshold;
 
     private void Awake()
     {
@@ -76,24 +77,25 @@ public class DoorAnimated : MonoBehaviour
             spriteRenderer.color = Color.Lerp(originalColor, highlightColor, t);
             if (isInteractButtonPressed && targetPosition.position.y > sideScrollingCamera.homeThreshold)
             {   
-                Enter(animatedSpriteHome, animatedSpriteHallway);
+                Enter(OtherDoor, HallwayDoor);
             }
-            else if (isInteractButtonPressed && 
-                (targetPosition.position.y < sideScrollingCamera.teachersRoomThreshold && 
-                targetPosition.position.y > sideScrollingCamera.classroomThreshold))
+            else if (isInteractButtonPressed && targetPosition.position.y > sideScrollingCamera.teachersRoomThreshold)
+            {
+                Enter(OtherDoor, HallwayDoor);
+            }
+            else if (isInteractButtonPressed && targetPosition.position.y > sideScrollingCamera.classroomThreshold)
             {   
-                Enter(animatedSpriteHallway, animatedSpriteHome);
+                Enter(HallwayDoor, OtherDoor);
             }
-
+            else if (isInteractButtonPressed && targetPosition.position.y < sideScrollingCamera.classroomThreshold)
+            {
+                Enter(OtherDoor,HallwayDoor);
+            }
             else if (isInteractButtonPressed)
             {
-                Debug.Log("Enter Classroom");
+                Debug.Log("Room threshold not set");
                 MovePlayerToTargetPosition();
             }
-            // if(InputManager.Instance.GetInteractPressed())
-            // {
-            //     MovePlayerToTargetPosition();
-            // }
         }
         else
         {
@@ -123,7 +125,7 @@ public class DoorAnimated : MonoBehaviour
         if (player != null && targetPosition != null)
         {
             // Move the player to the target position
-            player.transform.position = targetPosition.position + new Vector3(0f, -0.4f, 0f);
+            player.transform.position = targetPosition.position + new Vector3(0f, -1.35f, 0f);
             var sideSrolling = Camera.main.GetComponent<SideScrollingCamera>();
             sideSrolling.MoveCharacter(targetPosition.position.y);
         }
