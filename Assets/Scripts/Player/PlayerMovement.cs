@@ -50,8 +50,16 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        
         HorizontalMovement();
+        // if (door.blockMovement)
+        // {
+        // }else{
+        //     HorizontalMovement();
+        // }
+
+        
+        
+        
 
         // grounded = rb.Raycast(Vector2.down);
 

@@ -5754,11 +5754,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a3f0c4b436445738bda45bd89ead12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  touchInputPanel: {fileID: 0}
+  animatedSpriteHome: {fileID: 0}
+  sideScrollingCamera: {fileID: 0}
   targetPosition: {fileID: 40681626}
   glowSprite: {fileID: 1725872768}
   connection: {fileID: 40681626}
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   blinkSpeed: 1
+  shouldAnimate: 0
+  blockMovement: 0
 --- !u!61 &1241484968
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8698,6 +8703,45 @@ Transform:
   m_Father: {fileID: 1769890432}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1862964933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3488982623440500477, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
+  m_PrefabInstance: {fileID: 1100955542878025499}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1862964934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862964933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e6133a8e4b2f458d872bc45371a08ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 1987114370}
+  touchInputPanel: {fileID: 1927775611}
+  trackedObject: {fileID: 168128582}
+  homeHeight: 0
+  homeThreshold: 0
+  classroomHeight: 0
+  classroomThreshold: 0
+  sprites:
+  - {fileID: 21300000, guid: 61b0d2d3114154bcc857ee8aa085e478, type: 3}
+  - {fileID: 21300000, guid: 282ee9fdebd9943378f92fcd889faede, type: 3}
+  - {fileID: 21300000, guid: 0d3f77fd69e534d759ec8c53dd66e58b, type: 3}
+  - {fileID: 21300000, guid: b34b1e97e8bf54958870e44e577bdd9a, type: 3}
+  - {fileID: 21300000, guid: 8ce78e91774d4456ca5a8212af785cb0, type: 3}
+  - {fileID: 21300000, guid: 1bf873845c81643a997c6ae6083ef8c7, type: 3}
+  - {fileID: 21300000, guid: 49cb42de2e8ba443c844713a7e8a1be5, type: 3}
+  - {fileID: 21300000, guid: cf6039fabf2e04e2f9a6bbfaede859cd, type: 3}
+  - {fileID: 21300000, guid: 32a042744206b49d19d9d6916c9dd9eb, type: 3}
+  - {fileID: 21300000, guid: c9127517da2e340a4844bc0788c01f81, type: 3}
+  - {fileID: 21300000, guid: fe989acc8fcf144e2ba89febeb0938f9, type: 3}
+  - {fileID: 21300000, guid: 7260c31874142419899fed0b7022aa78, type: 3}
+  framerate: 0.16666667
+  frame: 0
 --- !u!1 &1866776819
 GameObject:
   m_ObjectHideFlags: 0
@@ -9591,6 +9635,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16, y: 8}
   m_EdgeRadius: 0
+--- !u!114 &1987114370 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5844030285001662454, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
+  m_PrefabInstance: {fileID: 1100955542878025499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a3f0c4b436445738bda45bd89ead12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1993468699
 GameObject:
   m_ObjectHideFlags: 0
@@ -10199,8 +10254,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 481021467160599388, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 1987114370}
+    - target: {fileID: 481021467160599388, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: moveSpeed
-      value: 18
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 481021467160599388, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: acceleration
@@ -10220,7 +10279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 481021467160599389, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 481021467160599389, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10500,6 +10559,30 @@ PrefabInstance:
       propertyPath: targetPosition
       value: 
       objectReference: {fileID: 1651580556}
+    - target: {fileID: 5844030285001662454, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
+      propertyPath: touchInputPanel
+      value: 
+      objectReference: {fileID: 1927775611}
+    - target: {fileID: 5844030285001662454, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
+      propertyPath: animatedSpriteHome
+      value: 
+      objectReference: {fileID: 1862964934}
+    - target: {fileID: 5844030285001662454, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
+      propertyPath: sideScrollingCamera
+      value: 
+      objectReference: {fileID: 519420030}
+    - target: {fileID: 7433351405259538505, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433351405259538505, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433351405259538505, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.27
+      objectReference: {fileID: 0}
     - target: {fileID: 8660255752269332965, guid: 92f76d5911269436dadaec230b1bd582, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.1
@@ -10658,6 +10741,14 @@ PrefabInstance:
       propertyPath: targetPosition
       value: 
       objectReference: {fileID: 1153413862}
+    - target: {fileID: 5856313177652736380, guid: 14325a9a808594cc0b23c690bb295490, type: 3}
+      propertyPath: animatedSpriteHome
+      value: 
+      objectReference: {fileID: 1862964934}
+    - target: {fileID: 5856313177652736380, guid: 14325a9a808594cc0b23c690bb295490, type: 3}
+      propertyPath: sideScrollingCamera
+      value: 
+      objectReference: {fileID: 519420030}
     - target: {fileID: 5856313178754250955, guid: 14325a9a808594cc0b23c690bb295490, type: 3}
       propertyPath: m_Name
       value: Door_to_home
