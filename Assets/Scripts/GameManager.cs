@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    // public Dictionary<string, Transform> spawnPoints = new Dictionary<string, Transform>(); // Dictionary for keeping spawn points for each scene
+
+    // public GameObject playerPrefab;
+    // private string previousSceneName;
+
+    public Camera myCamera;
     public int world { get; private set; } = 1;
     public int stage { get; private set; } = 1;
     public int lives { get; private set; } = 3;
@@ -15,11 +22,16 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null) {
             DestroyImmediate(gameObject);
+            myCamera.fieldOfView = 20f;
         } else {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            myCamera.fieldOfView = 200f;
         }
     }
+
+
+
 
     private void OnDestroy()
     {
@@ -31,14 +43,18 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-        NewGame();
+        // NewGame();
+
+        // Populate the spawnPoints dictionary in the editor or at runtime.
+        // Example: spawnPoints.Add("SceneA", GameObject.Find("SpawnPointA").transform);
     }
+
 
     public void NewGame()
     {
         lives = 3;
         coins = 0;
-        SceneManager.LoadScene($"AllCombined");
+        SceneManager.LoadScene($"Spaceport");
 
         // LoadLevel(1, 1);
     }
@@ -52,7 +68,6 @@ public class GameManager : MonoBehaviour
     {
         this.world = world;
         this.stage = stage;
-
         SceneManager.LoadScene($"{world}-{stage}");
     }
 

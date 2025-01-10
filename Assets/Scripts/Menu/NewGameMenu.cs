@@ -8,7 +8,7 @@ public class NewGameMenu : MonoBehaviour
 
     public void YesButton()
     {
-        SceneManager.LoadScene("1-1");
+        GameManager.Instance.NewGame();
     }
 
     public void NoButton()
