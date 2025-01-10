@@ -9941,7 +9941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 481021467160599391, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_Name
-      value: Mario
+      value: Mimi
       objectReference: {fileID: 0}
     - target: {fileID: 481021467160599391, guid: d83a5e7863a8afc4faee91819fff1fa7, type: 3}
       propertyPath: m_IsActive
