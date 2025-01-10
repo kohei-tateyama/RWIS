@@ -29,6 +29,9 @@ public class DialogueManager : MonoBehaviour
     [Header("Input Panel")]
     [SerializeField] private GameObject inputPanel;
     [SerializeField] private TMP_InputField nameInputField;
+
+    [Header("Touch Input Panel")]
+    [SerializeField] private GameObject touchInputPanel;
     private bool inputRequired;
 
     public int socialMeterValue { get; private set; }
@@ -36,13 +39,17 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private string audioClipsPath = "Audio/DialogueClips";
+
+    
+
+    // [SerializeField] private string audioClipsPath = "Audio/DialogueClips";
     //[SerializeField] private bool stopAudioSource;
     //[SerializeField] private DialogueAudioInfoSO defaultAudioInfo;
     //[SerializeField] private DialogueAudioInfoSO[] audioInfos;
     //[SerializeField] private bool makePredictable;
     //private DialogueAudioInfoSO currentAudioInfo;
     //private Dictionary<string, DialogueAudioInfoSO> audioInfoDictionary;
+
 
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
@@ -71,6 +78,11 @@ public class DialogueManager : MonoBehaviour
 
         // audioSource = this.gameObject.AddComponent<AudioSource>();
         // currentAudioInfo = defaultAudioInfo;
+
+        if (touchInputPanel == null)
+        {
+            Debug.LogError("'DialogueManager': No Touch Input Panel associated within inspector");
+        } 
 
         if (audioSource == null)
         {
@@ -146,7 +158,9 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
+        touchInputPanel.SetActive(false);
         dialoguePanel.SetActive(true);
+
 
         dialogueVariables.StartListening(currentStory);
         inkExternalFunctions.Bind(currentStory, emoteAnimator);
@@ -177,6 +191,9 @@ public class DialogueManager : MonoBehaviour
 
         // go back to default audio
         //SetCurrentAudioInfo(defaultAudioInfo.id);
+
+        // Allow for player movements input
+        touchInputPanel.SetActive(true);
     }
 
     private void ContinueStory() 

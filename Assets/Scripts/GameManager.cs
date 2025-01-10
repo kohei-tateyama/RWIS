@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,6 +6,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    public Dictionary<string, Transform> spawnPoints = new Dictionary<string, Transform>(); // Dictionary for keeping spawn points for each scene
+
+    public GameObject playerPrefab;
+    private string previousSceneName;
 
     public int world { get; private set; } = 1;
     public int stage { get; private set; } = 1;
@@ -21,6 +27,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+
+
     private void OnDestroy()
     {
         if (Instance == this) {
@@ -31,8 +40,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-        NewGame();
+        // NewGame();
+
+        // Populate the spawnPoints dictionary in the editor or at runtime.
+        // Example: spawnPoints.Add("SceneA", GameObject.Find("SpawnPointA").transform);
     }
+
 
     public void NewGame()
     {
