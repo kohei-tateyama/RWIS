@@ -9,7 +9,10 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 velocity;
     private Vector2 inputAxis;
-
+    public bool grounded { get; private set; }
+    public float maxJumpHeight = 5f;
+    public float maxJumpTime = 1f;
+    public float gravity => (-2f * maxJumpHeight) / Mathf.Pow(maxJumpTime / 2f, 2f);
     public float moveSpeed = 12f;
     public bool running => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis.x) > 0.25f;
     private RectTransform rectTransformSocialMeter,rectTransformBatteryBar;
@@ -49,8 +52,15 @@ public class PlayerMovement : MonoBehaviour
         }
         
         HorizontalMovement();
-    }
 
+        // grounded = rb.Raycast(Vector2.down);
+
+        // if (grounded) {
+        //     GroundedMovement();
+        // }
+
+        ApplyGravity();
+    }
     private void FixedUpdate()
     {
         // Move mario based on his velocity
@@ -110,8 +120,25 @@ public class PlayerMovement : MonoBehaviour
             InteractionButtonManager.GetInstance().HideButton();
         }
     }
+    private void ApplyGravity()
+    {
+        // Check if falling
+        // bool falling = velocity.y < 0f || !Input.GetButton("Jump");
+        bool falling = velocity.y < 0f || !InputManager.Instance.GetJumpPressed();
+        float multiplier = falling ? 2f : 1f;
+
+        // Apply gravity and terminal velocity
+        velocity.y += gravity * multiplier * Time.deltaTime;
+        velocity.y = Mathf.Max(velocity.y, gravity / 2f);
+    }
 
 
 }
+
+
+
+
+
+
 
 

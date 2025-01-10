@@ -68,7 +68,7 @@ public class Door : MonoBehaviour
         if (player != null && targetPosition != null)
         {
             // Move the player to the target position
-            player.transform.position = targetPosition.position + new Vector3(0f, -1.5f, 0f);
+            player.transform.position = targetPosition.position + new Vector3(0f, -0.4f, 0f);
             var sideSrolling = Camera.main.GetComponent<SideScrollingCamera>();
             sideSrolling.MoveCharacter(targetPosition.position.y);
         }
