@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
+    public Camera myCamera;
     public int world { get; private set; } = 1;
     public int stage { get; private set; } = 1;
     public int lives { get; private set; } = 3;
@@ -15,9 +15,11 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null) {
             DestroyImmediate(gameObject);
+            myCamera.fieldOfView = 20f;
         } else {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            myCamera.fieldOfView = 200f;
         }
     }
 
@@ -52,7 +54,6 @@ public class GameManager : MonoBehaviour
     {
         this.world = world;
         this.stage = stage;
-
         SceneManager.LoadScene($"{world}-{stage}");
     }
 
