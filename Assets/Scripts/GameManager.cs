@@ -22,11 +22,17 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null) {
             DestroyImmediate(gameObject);
-            myCamera.fieldOfView = 20f;
+            if (myCamera != null)
+            {
+                myCamera.fieldOfView = 20f;
+            }
         } else {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            myCamera.fieldOfView = 200f;
+            if (myCamera != null)
+            {
+                myCamera.fieldOfView = 200f;
+            }
         }
     }
 
@@ -54,9 +60,7 @@ public class GameManager : MonoBehaviour
     {
         lives = 3;
         coins = 0;
-        SceneManager.LoadScene($"Spaceport");
-
-        // LoadLevel(1, 1);
+        SceneManager.LoadScene($"AllCombined");
     }
 
     public void GameOver()

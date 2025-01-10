@@ -2093,8 +2093,8 @@ MonoBehaviour:
   - {fileID: 1943750775}
   inputPanel: {fileID: 1580180256}
   nameInputField: {fileID: 1513249981}
+  touchInputPanel: {fileID: 1927775611}
   audioSource: {fileID: 0}
-  audioClipsPath: Audio/DialogueClips
 --- !u!1 &656272910
 GameObject:
   m_ObjectHideFlags: 0

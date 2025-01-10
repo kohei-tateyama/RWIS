@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AllCombined.unity
     guid: f0421da799db54256b2b1cd9995251e0
+  - enabled: 1
+    path: Assets/Scenes/Spaceport.unity
+    guid: 1fcd353879e38489d8b403be340ca97e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ef06c1ea97de843d9a00c9dce7b905af, type: 2}
