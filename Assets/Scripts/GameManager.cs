@@ -60,7 +60,9 @@ public class GameManager : MonoBehaviour
     {
         lives = 3;
         coins = 0;
-        SceneManager.LoadScene($"AllCombined");
+        SceneManager.LoadScene($"spaceport");
+
+        // LoadLevel(1, 1);
     }
 
     public void GameOver()
