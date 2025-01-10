@@ -1,4 +1,4 @@
-﻿INCLUDE globals.ink
+INCLUDE globals.ink
 VAR social_meter = 0
 VAR classmate_name = "Alex"
 VAR classmate_name_capital = "ALEX"
@@ -7,9 +7,9 @@ VAR player_input = ""
 -> classroom
 
 === classroom ===
-Teacher: We have a new student here today. Please introduce yourself.
+Teacher: We have a new student here today. Please introduce yourself.  #speaker:Teacher #portrait:teacher #layout:left
 
-MC: Hello, I'm MC. I just moved here from Mars. It's nice to meet you.
+MIMI: Hello, I'm MIMI. I just moved here from Mars. It's nice to meet you. #speaker:Mimi    #portrait:mimi  #layout:right
 
 + [Mention your hearing impairment]
     ~ social_meter = social_meter - 1
@@ -20,21 +20,21 @@ MC: Hello, I'm MC. I just moved here from Mars. It's nice to meet you.
     -> teacher_response
 
 === teacher_response ===
-Teacher: Thank you, you can sit there.
+Teacher: Thank you, you can sit there.  #speaker:Teacher #portrait:teacher #layout:left
 
 -> classmate_interaction
 
 === classmate_interaction ===
-CM (whisper): Hi, I'm {classmate_name}.
+CM (whisper): Hi, I'm {classmate_name}. #speaker:classmate    #portrait:default  #layout:right
 
-MC: (You try to recall the classmate's name.) #input_required:name
+MIMI: (You try to recall the classmate's name.) #input_required:name #speaker:Mimi    #portrait:mimi  #layout:right
 
 { player_input == classmate_name:
-    MC: Nice to meet you, {classmate_name}.
+    MIMI: Nice to meet you, {classmate_name}. #input_required:name #speaker:Mimi    #portrait:mimi  #layout:right
     -> lesson
 
 - else:
-    MC: Sorry, could you repeat that?
+    MIMI: Sorry, could you repeat that? #input_required:name #speaker:Mimi    #portrait:mimi  #layout:right
     ~ social_meter = social_meter - 1
     -> classmate_repeating1
 }
@@ -42,19 +42,19 @@ MC: (You try to recall the classmate's name.) #input_required:name
 === classmate_repeating1 ===
 CM: My name is {classmate_name}.
 
-MC: (You try to recall the classmate's name.) #input_required:name
+MIMI: (You try to recall the classmate's name.) #input_required:name  #speaker:Mimi    #portrait:mimi  #layout:right
 { player_input == classmate_name:
-    MC: Okay! Nice to meet you, {classmate_name}.
+    MIMI: Okay! Nice to meet you, {classmate_name}.
     -> lesson
 
 - else:
-    MC: I'm so sorry, could you repeat that one more time?
+    MIMI: I'm so sorry, could you repeat that one more time?    #speaker:Mimi    #portrait:mimi  #layout:right
     ~ social_meter = social_meter - 1
     -> classmate_repeating2
 }
 
 === classmate_repeating2 ===
-CM: MY NAME IS {classmate_name_capital}! What is your problem??
+CM: MY NAME IS {classmate_name_capital}! What is your problem?? #speaker:classmate    #portrait:default  #layout:right
 
 + [Try to say the name again]
     -> say_name
@@ -63,15 +63,15 @@ CM: MY NAME IS {classmate_name_capital}! What is your problem??
     -> akward_silence
 
 === say_name ===
-MC: Sorry, now I understood. Nice to meet you {classmate_name}.
+MIMI: Sorry, now I understood. Nice to meet you {classmate_name}. #speaker:Mimi    #portrait:mimi
 -> lesson
 
 === akward_silence ===
-MC: Okay.. nice to meet you..
+MIMI: Okay.. nice to meet you..#speaker:Mimi    #portrait:mimi
 -> lesson
 
 === lesson ===
-Teacher: Today I will...
+Teacher: Today I will... #speaker:Teacher #portrait:teacher
 
 Teacher: Here are the permission slips for next week's field trip to the mines. Please have your parents sign them and bring them back before the trip.
 
