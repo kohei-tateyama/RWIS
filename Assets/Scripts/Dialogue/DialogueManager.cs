@@ -41,16 +41,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
 
     
-
-    // [SerializeField] private string audioClipsPath = "Audio/DialogueClips";
-    //[SerializeField] private bool stopAudioSource;
-    //[SerializeField] private DialogueAudioInfoSO defaultAudioInfo;
-    //[SerializeField] private DialogueAudioInfoSO[] audioInfos;
-    //[SerializeField] private bool makePredictable;
-    //private DialogueAudioInfoSO currentAudioInfo;
-    //private Dictionary<string, DialogueAudioInfoSO> audioInfoDictionary;
-
-
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
 
@@ -172,8 +162,14 @@ public class DialogueManager : MonoBehaviour
 
         // Observe changes to 'social_meter'
         currentStory.ObserveVariable("social_meter", OnSocialVariableChanged);
+        currentStory.BindExternalFunction("pause", (float seconds) => { StartCoroutine(PauseCoroutine(seconds));});
 
         ContinueStory();
+    }
+
+    private IEnumerator PauseCoroutine(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 
     private IEnumerator ExitDialogueMode() 

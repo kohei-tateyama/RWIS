@@ -9,7 +9,7 @@ VAR player_input = ""
 === classroom ===
 Teacher: We have a new student here today. Please introduce yourself.  #speaker:Teacher #portrait:teacher #layout:left #audio:Class_Teacher_1
 
-MIMI: Hello, I'm MIMI. I just moved here from Mars. It's nice to meet you. #speaker:Mimi    #portrait:mimi  #layout:right #audio:Class_Teacher_2
+MIMI: Hello, I'm MIMI. I just moved here from Earth. It's nice to meet you. #speaker:Mimi    #portrait:mimi  #layout:right #audio:Class_Teacher_2
 
 + [Mention your hearing impairment]
     ~ social_meter = social_meter - 1
