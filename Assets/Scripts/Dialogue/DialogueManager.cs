@@ -5,6 +5,7 @@ using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.Audio;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -37,8 +38,13 @@ public class DialogueManager : MonoBehaviour
     public int socialMeterValue { get; private set; }
     public event Action<int> OnSocialValueChangedEvent;
 
+    [Header("Mixer Group - Dialogues")]
+    [SerializeField] private AudioMixerGroup MixerGroupDialogue;
+
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
+
+
 
     
     private Story currentStory;
@@ -283,6 +289,7 @@ public class DialogueManager : MonoBehaviour
         AudioClip clip = Resources.Load<AudioClip>($"{clipName}");
         if (clip != null)
         {
+            audioSource.outputAudioMixerGroup = MixerGroupDialogue;
             audioSource.PlayOneShot(clip);
         }
         else
