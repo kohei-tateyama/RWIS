@@ -3,7 +3,7 @@ VAR social_meter = 0
 VAR classmate_name = "Alex"
 VAR classmate_name_capital = "ALEX"
 VAR player_input = ""
-
+VAR isGoingToGate = 0
 -> classroom
 
 === classroom ===
