@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorAnimated : MonoBehaviour
@@ -8,8 +7,8 @@ public class DoorAnimated : MonoBehaviour
     [SerializeField] private AnimatedSpriteHome OtherDoor;
     [SerializeField] private AnimatedSpriteHome HallwayDoor;
     [SerializeField] private SideScrollingCamera sideScrollingCamera;
+    
     [Header("Target Position")]
-
     [SerializeField] private Transform targetPosition;
 
     [Header("Glowing sprite")]
@@ -25,7 +24,6 @@ public class DoorAnimated : MonoBehaviour
     private bool playerInRange;
     public bool shouldAnimate = false;
     public bool blockMovement = false;
-    // private bool isHomeDoor = targetPosition.position.y > sideScrollingCamera.homeThreshold;
 
     private void Awake()
     {
@@ -58,23 +56,18 @@ public class DoorAnimated : MonoBehaviour
         Out.InvokeRepeating("EnterDoor", 0f, Out.framerate);
         animatedDuration = Out.sprites.Length * Out.framerate;
         StartCoroutine(WaitAndExit(animatedDuration, In));
-
-        
     }
 
     public void Update()
     {
         if (playerInRange && !DialogueManager.Instance.dialogueIsPlaying)
         {
-            glowSprite.SetActive(true);
-
-
-            bool isInteractButtonPressed = InputManager.Instance.GetInteractPressed();
-
-
             // Blink between original and highlight color
+            glowSprite.SetActive(true);
             float t = Mathf.PingPong(Time.time * blinkSpeed, 1f);
             spriteRenderer.color = Color.Lerp(originalColor, highlightColor, t);
+            
+            bool isInteractButtonPressed = InputManager.Instance.GetInteractPressed();
             if (isInteractButtonPressed && targetPosition.position.y > sideScrollingCamera.homeThreshold)
             {   
                 Enter(OtherDoor, HallwayDoor);

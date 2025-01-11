@@ -29,7 +29,7 @@ public class DialogueTrigger : MonoBehaviour
                 DialogueManager.Instance.EnterDialogueMode(inkJSON, emoteAnimator);
             }
         }
-        else 
+        else
         {
             visualCue.SetActive(false);
         }
