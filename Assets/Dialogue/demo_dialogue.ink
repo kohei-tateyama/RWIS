@@ -1,4 +1,4 @@
-VAR social_meter = 0
+// VAR social_meter = 0
 -> start
 
 === start ===
@@ -8,11 +8,15 @@ VAR social_meter = 0
 [You and Dad are at the spaceport, standing near a boarding gate.]
 
 // ~ PlaySound("announcement")
-Announcement: All passengers for flight 393 to Ceres please come to boarding gate ***teen.
+Announcement: Final call for the outer moon loop. All passengers please come to gate ***teen.
+Mimi: What did they announce?
+#speaker:Mimi    #portrait:Mimi  #layout:right
+Dad: That’s not for our flight
+#speaker:Dad    #portrait:Dad  #layout:right
+Announcement: The shuttle flight to Aulus will begin boarding in 5 minutes.  Please proceed to gate 15.
 
-Dad (sign): What did they say?
-
-MC (sign): I think they said to go to the gate? I’m not sure which one though.
+Dad: Our flight will board in 5 minutes we should go to the gate. 
+#speaker:Dad    #portrait:Dad  #layout:right
 
 * [Go to the first gate.] -> first_gate
 // * [Wait and try to hear the announcement again.] -> missed_announcement

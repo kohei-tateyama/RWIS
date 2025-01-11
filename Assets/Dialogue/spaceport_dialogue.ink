@@ -1,16 +1,36 @@
 INCLUDE globals.ink
+VAR isGoingToGate = 0
+VAR social_meter = 0
+-> start
 
-=== outer_moon_loop ===
-Announcement: Final call for the outer moon loop. All passengers please come to gate 12. #speaker:Announcement #audio:staticy_announcement #layout:center
+=== start ===
+-> spaceport_scene
 
-=== conversation ===
-Mimi: What did they announce? #speaker:Mimi #portrait:mimi_neutral #layout:left
-Dad: That’s not for our flight. #speaker:Dad #portrait:dad_neutral #layout:right
+=== spaceport_scene ===
+#speaker:Narration
+[You and Dad are at the spaceport, standing near a boarding gate.]
 
-Announcement: The shuttle flight to Aulus will begin boarding in 5 minutes. Please proceed to gate 15. #speaker:Announcement #audio:boarding_announcement #layout:center
+// ~ PlaySound("announcement")
+#speaker:Announcement
+Final call for the outer moon loop. All passengers please come to gate ***teen.
 
-~ pause(2)
+#speaker:Mimi    #portrait:Mimi  #layout:right
+What did they announce?
 
-Dad: Our flight will board in 5 minutes. We should go to the gate. #speaker:Dad #portrait:dad_neutral #layout:right
+#speaker:Dad    #portrait:Dad  #layout:right
+That’s not for our flight
+
+#speaker:Announcement
+The shuttle flight to Aulus will begin boarding in 5 minutes.  Please proceed to gate 15.
+
+#speaker:Dad    #portrait:Dad  #layout:right
+Our flight will board in 5 minutes we should go to the gate. 
++ [Yes]
+    ~ isGoingToGate = 1
+    -> finish
+
++ [No]
+    -> finish
+=== finish ===
 
 -> END

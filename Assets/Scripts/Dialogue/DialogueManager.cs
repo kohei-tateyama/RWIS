@@ -35,7 +35,9 @@ public class DialogueManager : MonoBehaviour
     private bool inputRequired;
 
     public int socialMeterValue { get; private set; }
+    public int isFollowingMC {get; private set; }
     public event Action<int> OnSocialValueChangedEvent;
+    public event Action<int> OnFollowingMCEvent;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -172,6 +174,7 @@ public class DialogueManager : MonoBehaviour
 
         // Observe changes to 'social_meter'
         currentStory.ObserveVariable("social_meter", OnSocialVariableChanged);
+        currentStory.ObserveVariable("isGoingToGate", OnFollowingMC);
 
         ContinueStory();
     }
@@ -188,6 +191,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
 
         currentStory.RemoveVariableObserver(OnSocialVariableChanged, "social_meter");
+        currentStory.RemoveVariableObserver(OnFollowingMC, "isGoingToGate");
 
         // go back to default audio
         //SetCurrentAudioInfo(defaultAudioInfo.id);
@@ -426,6 +430,13 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void OnFollowingMC(string variableName, object newValue)
+    {
+        isFollowingMC = Convert.ToInt32(newValue);
+        Debug.Log("Following MC: " + isFollowingMC);
+        //Notify other scripts
+        OnFollowingMCEvent?.Invoke(isFollowingMC);
+    }
     private void OnSocialVariableChanged(string variableName, object newValue)
     {
         socialMeterValue = Convert.ToInt32(newValue);
