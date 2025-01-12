@@ -6744,6 +6744,38 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3515499120633839922, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515499120633839922, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738602290183545894, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 542a91857eded4ce98ef6dd67db69696, type: 3}
+    - target: {fileID: 3738602290183545894, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738602290183545894, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738602290183545894, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_SpriteTileMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807537574575434191, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6924430438932398369, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7889390365219081652, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
       propertyPath: musicToggle
       value: 
@@ -6751,6 +6783,14 @@ PrefabInstance:
     - target: {fileID: 7889390365219081652, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
       propertyPath: volumeSlider
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042490708795951064, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042490708795951064, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8311033372424796439, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
       propertyPath: m_IsActive
