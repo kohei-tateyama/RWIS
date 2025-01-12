@@ -920,6 +920,7 @@ Transform:
   - {fileID: 1656951247}
   - {fileID: 1476142899}
   - {fileID: 1451626450}
+  - {fileID: 1226001392}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2105,21 +2106,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackedObject: {fileID: 168128582}
-  hallwayHeight: 4.5
-  hallwayMinX: -40
-  hallwayMaxX: 60
-  classroomHeight: -20
+  scene: AllCombined
   classroomThreshold: -10
-  classroomMinX: -40
-  classroomMaxX: 30
-  teachersRoomHeight: 20
   teachersRoomThreshold: 10
-  teachersRoomMinX: 7
-  teachersRoomMaxX: 14
-  homeHeight: 40
   homeThreshold: 30
-  homeMinX: -23
-  homeMaxX: 23
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3723,7 +3713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406b98feba8fc5d4991b3f844d1ff986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCamera: {fileID: 519420031}
+  mainCamera: {fileID: 519420031}
 --- !u!4 &742341785
 Transform:
   m_ObjectHideFlags: 0
@@ -3739,6 +3729,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &743703525 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6060972268708592735, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
+  m_PrefabInstance: {fileID: 5871344987604289695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae676a016f0db4543926ac74f8df753b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &765031280
 GameObject:
   m_ObjectHideFlags: 0
@@ -5156,7 +5157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8367385270170277044, guid: b964581a33e204fc2ac3b445c3a5a4f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24
+      value: 23.5
       objectReference: {fileID: 0}
     - target: {fileID: 8367385270170277044, guid: b964581a33e204fc2ac3b445c3a5a4f8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5579,7 +5580,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 168514099}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1227830242
 GameObject:
@@ -10845,7 +10846,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 69f71dc03c62e4fb298f1762e44c7826, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -11207,6 +11208,10 @@ PrefabInstance:
       propertyPath: batteryBar
       value: 
       objectReference: {fileID: 511198402503426282}
+    - target: {fileID: 2359108251790238835, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
+      propertyPath: playerSpriteRenderer
+      value: 
+      objectReference: {fileID: 743703525}
     - target: {fileID: 2756593075850618836, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -11222,6 +11227,10 @@ PrefabInstance:
     - target: {fileID: 3106024447925553561, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5871344987704785112, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
+      propertyPath: moveSpeed
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5871344987704785113, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
       propertyPath: m_RootOrder
@@ -11233,7 +11242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871344987704785113, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 3.15
       objectReference: {fileID: 0}
     - target: {fileID: 5871344987704785113, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11268,6 +11277,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5871344987704785115, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
+      propertyPath: m_Name
+      value: Mimi
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540364109516299012, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
       propertyPath: m_Name
       value: Mimi
       objectReference: {fileID: 0}
@@ -11337,8 +11350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualCue: {fileID: 2955005813059966049}
-  emoteAnimator: {fileID: 3749068264998230286}
-  inkJSON: {fileID: 4900000, guid: 1dcfe8ea9ec1440a98765547ba5f905f, type: 3}
+  inkJSON: {fileID: 4900000, guid: 1eb97d8668cb641ab9aa0b953a6e25d0, type: 3}
 --- !u!114 &8738326697306463602
 MonoBehaviour:
   m_ObjectHideFlags: 0

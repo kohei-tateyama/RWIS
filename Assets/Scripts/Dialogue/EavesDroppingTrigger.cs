@@ -4,13 +4,19 @@ using UnityEngine.UI;
 
 public class EavesDroppingTrigger : MonoBehaviour
 {
-
+    [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue; // Visual indicator for the player
     
+    [Header("Progress Text")]
     [SerializeField] private  TextMeshProUGUI progressText; //Text to display progress (e.g., "Listening: 50%")
+    
+    [Header("Progress Bar")]
     [SerializeField] private GameObject progressBarObject; // Progress bar or indicator for eavesdropping
+    
+    [Header("INK json")]
     [SerializeField] private TextAsset inkJSON;
-    [SerializeField] private Animator emoteAnimator;
+    
+    [Header("Listening Time")]
     [SerializeField] private float listeningTime = 4f;   // Time required to listen before unlocking dialogue
     
 
@@ -60,7 +66,7 @@ public class EavesDroppingTrigger : MonoBehaviour
             {
                 if (InputManager.Instance.GetInteractPressed())
                 {
-                    DialogueManager.Instance.EnterDialogueMode(inkJSON, emoteAnimator);
+                    DialogueManager.Instance.EnterDialogueMode(inkJSON);
                 }
             }
         }
@@ -121,7 +127,7 @@ public class EavesDroppingTrigger : MonoBehaviour
         visualCue.SetActive(false);
         progressBarObject.SetActive(false);
         isDialogueUnlocked = true;
-        DialogueManager.Instance.EnterDialogueMode(inkJSON, emoteAnimator);
+        DialogueManager.Instance.EnterDialogueMode(inkJSON);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

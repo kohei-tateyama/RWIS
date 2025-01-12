@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
-using System;
 using UnityEngine.Audio;
 
 public class DialogueManager : MonoBehaviour
@@ -33,26 +32,17 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Touch Input Panel")]
     [SerializeField] private GameObject touchInputPanel;
-    private bool inputRequired;
-
-    public int socialMeterValue { get; private set; }
-    public int isFollowingMC {get; private set; }
-    public event Action<int> OnSocialValueChangedEvent;
 
     [Header("Mixer Group - Dialogues")]
     [SerializeField] private AudioMixerGroup MixerGroupDialogue;
-    public event Action<int> OnFollowingMCEvent;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
-
-
-
     
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
-
     private bool canContinueToNextLine = false;
+    private bool inputRequired;
 
     private Coroutine displayLineCoroutine;
 
@@ -63,19 +53,15 @@ public class DialogueManager : MonoBehaviour
     private const string INPUT_REQ_TAG = "input_required";
 
     private DialogueVariables dialogueVariables;
-    private InkExternalFunctions inkExternalFunctions;
 
     public static DialogueManager Instance { get; private set; }
+
 
     private void Awake() 
     {
         Instance = this;
 
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
-        inkExternalFunctions = new InkExternalFunctions();
-
-        // audioSource = this.gameObject.AddComponent<AudioSource>();
-        // currentAudioInfo = defaultAudioInfo;
 
         if (touchInputPanel == null)
         {
@@ -106,33 +92,7 @@ public class DialogueManager : MonoBehaviour
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
         }
-
-        //InitializeAudioInfoDictionary();
     }
-
-    //private void InitializeAudioInfoDictionary()
-    //{
-    //    audioInfoDictionary = new Dictionary<string, DialogueAudioInfoSO>();
-    //    audioInfoDictionary.Add(defaultAudioInfo.id, defaultAudioInfo);
-    //    foreach (DialogueAudioInfoSO audioInfo in audioInfos)
-    //    {
-    //        audioInfoDictionary.Add(audioInfo.id, audioInfo);
-    //    }
-    //}
-
-    //private void SetCurrentAudioInfo(string id)
-    //{
-    //    DialogueAudioInfoSO audioInfo = null;
-    //    audioInfoDictionary.TryGetValue(id, out audioInfo);
-    //    if (audioInfo != null)
-    //    {
-    //        this.currentAudioInfo = audioInfo;
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("Failed to find audio info for id: " + id);
-    //    }
-    //}
 
     private void Update() 
     {
@@ -143,7 +103,6 @@ public class DialogueManager : MonoBehaviour
         }
 
         // handle continuing to the next line in the dialogue when submit is pressed
-        // NOTE: The 'currentStory.currentChoiecs.Count == 0' part was to fix a bug after the Youtube video was made
         if (canContinueToNextLine 
             && currentStory.currentChoices.Count == 0 
             && InputManager.Instance.GetSubmitPressed())
@@ -152,33 +111,23 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON, Animator emoteAnimator) 
+    public void EnterDialogueMode(TextAsset inkJSON) 
     {
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         touchInputPanel.SetActive(false);
         dialoguePanel.SetActive(true);
 
-
+        // observe INK stories variables changes
         dialogueVariables.StartListening(currentStory);
-        inkExternalFunctions.Bind(currentStory, emoteAnimator);
+        currentStory.BindExternalFunction("pause", (float seconds) => { StartCoroutine(PauseCoroutine(seconds)); });
 
         // reset portrait, layout, and speaker
         displayNameText.text = "???";
         portraitAnimator.Play("default");
         layoutAnimator.Play("right");
-
-        // Observe changes to 'social_meter'
-        currentStory.ObserveVariable("social_meter", OnSocialVariableChanged);
-        currentStory.BindExternalFunction("pause", (float seconds) => { StartCoroutine(PauseCoroutine(seconds));});
-        currentStory.ObserveVariable("isGoingToGate", OnFollowingMC);
-
+        
         ContinueStory();
-    }
-
-    private IEnumerator PauseCoroutine(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
     }
 
     private IEnumerator ExitDialogueMode() 
@@ -186,20 +135,19 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         dialogueVariables.StopListening(currentStory);
-        inkExternalFunctions.Unbind(currentStory);
+        currentStory.UnbindExternalFunction("pause");
 
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
 
-        currentStory.RemoveVariableObserver(OnSocialVariableChanged, "social_meter");
-        currentStory.RemoveVariableObserver(OnFollowingMC, "isGoingToGate");
-
-        // go back to default audio
-        //SetCurrentAudioInfo(defaultAudioInfo.id);
-
         // Allow for player movements input
         touchInputPanel.SetActive(true);
+    }
+
+    private IEnumerator PauseCoroutine(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 
     private void ContinueStory() 
@@ -238,6 +186,7 @@ public class DialogueManager : MonoBehaviour
         // set the text to the full line, but set the visible characters to 0
         dialogueText.text = line;
         dialogueText.maxVisibleCharacters = 0;
+        
         // hide items while text is typing
         continueIcon.SetActive(false);
         HideChoices();
@@ -268,13 +217,7 @@ public class DialogueManager : MonoBehaviour
             // if not rich text, add the next letter and wait a small time
             else 
             {
-                //PlayDialogueSound(dialogueText.maxVisibleCharacters, dialogueText.text[dialogueText.maxVisibleCharacters]);
                 dialogueText.maxVisibleCharacters++;
-                //if (stopAudioSource)
-                //{
-                //    audioSource.Stop();
-                //}
-                //audioSource.PlayOneShot(dialogueTypingSoundClip);
                 yield return new WaitForSeconds(typingSpeed);
             }
         }
@@ -321,6 +264,7 @@ public class DialogueManager : MonoBehaviour
             {
                 Debug.LogError("Tag could not be appropriately parsed: " + tag);
             }
+
             string tagKey = splitTag[0].Trim();
             string tagValue = splitTag[1].Trim();
             
@@ -415,8 +359,8 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator SelectGameObject(GameObject gameObject)
     {
-        // Event System requires we clear it first, then wait
-        // for at least one frame before we set the current selected object.
+        // Event System requires we clear it first, 
+        // then wait for at least one frame before we set the current selected object
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
         EventSystem.current.SetSelectedGameObject(gameObject);
@@ -427,25 +371,12 @@ public class DialogueManager : MonoBehaviour
         if (canContinueToNextLine) 
         {
             currentStory.ChooseChoiceIndex(choiceIndex);
+            
             // NOTE: The below two lines were added to fix a bug after the Youtube video was made
             InputManager.Instance.RegisterSubmitPressed(); // this is specific to my InputManager script
+            
             ContinueStory();
         }
-    }
-
-    private void OnFollowingMC(string variableName, object newValue)
-    {
-        isFollowingMC = Convert.ToInt32(newValue);
-        Debug.Log("Following MC: " + isFollowingMC);
-        //Notify other scripts
-        OnFollowingMCEvent?.Invoke(isFollowingMC);
-    }
-    private void OnSocialVariableChanged(string variableName, object newValue)
-    {
-        socialMeterValue = Convert.ToInt32(newValue);
-        
-        // Notify other scripts
-        OnSocialValueChangedEvent?.Invoke(socialMeterValue);
     }
 
     public Ink.Runtime.Object GetVariableState(string variableName) 

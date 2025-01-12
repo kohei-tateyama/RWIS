@@ -119,8 +119,10 @@ public class DoorAnimated : MonoBehaviour
         {
             // Move the player to the target position
             player.transform.position = targetPosition.position + new Vector3(0f, -1.35f, 0f);
-            var sideSrolling = Camera.main.GetComponent<SideScrollingCamera>();
-            sideSrolling.MoveCharacter(targetPosition.position.y);
+            
+            // Move camera to follow player position
+            var sideScrolling = Camera.main.GetComponent<SideScrollingCamera>();
+            sideScrolling.MoveCamera(targetPosition.position);
         }
         else
         {

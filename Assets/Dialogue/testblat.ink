@@ -1,6 +1,5 @@
 INCLUDE globals.ink
 
-VAR social_meter = 0
 VAR isFirstTime = true
 
 Hello there! #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:yoroshiku
@@ -10,7 +9,6 @@ Hello there! #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:y
 {isFirstTime: **** | How} are you {isFirstTime: **** | feeling} today?
 {isFirstTime:
     + [Huh?]
-        ~ playEmote("exclamation")
         I couldn't hear you clearly
         Can you say that again?#portrait:dr_green_happy
         ~ isFirstTime = false
@@ -21,7 +19,6 @@ Hello there! #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:y
         -> END
 - else:
     + [Happy]
-        ~ playEmote("exclamation")
         I’m glad you’re still happy! #portrait:dr_green_happy
         -> next_section
     + [Sad]
@@ -32,11 +29,9 @@ Hello there! #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:y
 === next_section ===
 - Don't trust him, he's <b><color=\#FF1E35>not</color></b> a real doctor! #speaker:Ms. Yellow #portrait:ms_yellow_neutral #layout:right #audio:yoroshikugirl
 
-~ playEmote("question")
 Well, do you have any more questions? #speaker:Dr. Green #portrait:dr_green_neutral #layout:left #audio:yoroshiku
 + [Yes]
     -> main
 + [No]
     Goodbye then!
-    ~ playEmote("exclamation")
     -> END

@@ -1,9 +1,9 @@
 INCLUDE globals.ink
-VAR social_meter = 0
+
 VAR classmate_name = "Alex"
 VAR classmate_name_capital = "ALEX"
 VAR player_input = ""
-VAR isGoingToGate = 0
+
 -> classroom
 
 === classroom ===
@@ -12,7 +12,7 @@ Teacher: We have a new student here today. Please introduce yourself.  #speaker:
 MIMI: Hello, I'm MIMI. I just moved here from Earth. It's nice to meet you. #speaker:Mimi    #portrait:mimi  #layout:right #audio:Class_Teacher_2
 
 + [Mention your hearing impairment]
-    ~ social_meter = social_meter - 1
+    ~ social_meter = social_meter - social_meter_decrease
     I have hearing loss so please be patient if I can't understand what you are saying. #audio:Class_Teacher_3
     -> teacher_response
 
@@ -35,7 +35,7 @@ MIMI: (You try to recall the classmate's name.) #input_required:name #speaker:Mi
 
 - else:
     MIMI: Sorry, could you repeat that? #input_required:name #speaker:Mimi    #portrait:mimi  #layout:right #audio:Class_Teacher_8
-    ~ social_meter = social_meter - 1
+    ~ social_meter = social_meter - social_meter_decrease
     MIMI: Sorry, could you repeat that?
     
     -> classmate_repeating1
@@ -52,7 +52,7 @@ MIMI: (You try to recall the classmate's name.) #input_required:name  #speaker:M
 
 - else:
     MIMI: I'm so sorry, could you repeat that one more time?    #speaker:Mimi    #portrait:mimi  #layout:right #audio:Class_Teacher_11
-    ~ social_meter = social_meter - 1
+    ~ social_meter = social_meter - social_meter_decrease
     -> classmate_repeating2
 }
 
@@ -77,7 +77,5 @@ MIMI: Okay.. nice to meet you..#speaker:Mimi    #portrait:mimi #audio:Class_Teac
 Teacher: Today I will... #speaker:Teacher #portrait:teacher #audio:Class_Teacher_15
 
 Teacher: Here are the permission slips for next week's field trip to the mines. Please have your parents sign them and bring them back before the trip. #audio:Class_Teacher_16
-
-//~ playEmote("exclamation")
 
 -> END

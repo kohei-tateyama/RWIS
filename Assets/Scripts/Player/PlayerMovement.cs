@@ -9,13 +9,17 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 velocity;
     private Vector2 inputAxis;
-    public bool grounded { get; private set; }
-    public float maxJumpHeight = 5f;
-    public float maxJumpTime = 1f;
-    public float gravity => (-2f * maxJumpHeight) / Mathf.Pow(maxJumpTime / 2f, 2f);
+    
+    private float maxJumpHeight = 5f;
+    private float maxJumpTime = 1f;
+    private float gravity => (-2f * maxJumpHeight) / Mathf.Pow(maxJumpTime / 2f, 2f);
+    
     public float moveSpeed = 18f;
+    
+    public bool grounded { get; private set; }
     public bool running => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis.x) > 0.25f;
-    private RectTransform rectTransformSocialMeter,rectTransformBatteryBar;
+    
+    private RectTransform rectTransformSocialMeter, rectTransformBatteryBar;
 
 
     private void Awake()
@@ -23,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<Collider2D>();
+        
         Transform childObjectBattery = transform.Find("Canvas Battery");
         Transform childObjectSocialMeter = transform.Find("Canvas SM");
         rectTransformBatteryBar = childObjectBattery.GetComponent<RectTransform>();
@@ -49,12 +54,8 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+        
         HorizontalMovement();
-        // if (door.blockMovement)
-        // {
-        // }else{
-        //     HorizontalMovement();
-        // }
 
         // grounded = rb.Raycast(Vector2.down);
 
@@ -64,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         ApplyGravity();
     }
+
     private void FixedUpdate()
     {
         // Move mario based on his velocity
@@ -104,7 +106,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("NPC") 
@@ -114,7 +115,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("NPC") 
@@ -123,10 +123,10 @@ public class PlayerMovement : MonoBehaviour
             InteractionButtonManager.GetInstance().HideButton();
         }
     }
+
     private void ApplyGravity()
     {
         // Check if falling
-        // bool falling = velocity.y < 0f || !Input.GetButton("Jump");
         bool falling = velocity.y < 0f || !InputManager.Instance.GetJumpPressed();
         float multiplier = falling ? 2f : 1f;
 
@@ -135,13 +135,4 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = Mathf.Max(velocity.y, gravity / 2f);
     }
 
-
 }
-
-
-
-
-
-
-
-

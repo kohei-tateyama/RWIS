@@ -1,5 +1,5 @@
 INCLUDE globals.ink
-VAR social_meter = 0
+
 VAR classmate_name = "Alex"
 VAR classmate_name_capital = "ALEX"
 VAR player_input = ""
@@ -24,7 +24,5 @@ Head Teacher: Ok I know we’re on Aulus but you’ll find that this is like any
 Bell sounds: #audio:Class_Teacher_2
 
 Head Teacher: Oh it’s late, I’ll walk you to your classroom. If you need anything, ask me or you can ask Ara, the school president. She’s not here today but you’ll meet her soon. #speaker:Mimi    #portrait:mimi  #layout:right #audio:Class_Teacher_2
-
-//~ playEmote("exclamation")
 
 -> END

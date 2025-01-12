@@ -1,19 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SocialMeter : MonoBehaviour
 {
     public Slider slider;
 
-    public void SetMaxHealth(int health){
-        slider.maxValue = health;
-        slider.value = health;
+    public void SetMaxSocialPoints(int maxSocialPoints){
+        slider.maxValue = maxSocialPoints;
+        slider.value    = maxSocialPoints;
     }
 
-    public void SetHealth(int health){
-        slider.value = health;
+    public void SetSocialPoints(int socialPoints){
+        slider.value = socialPoints;
     }
 
 }

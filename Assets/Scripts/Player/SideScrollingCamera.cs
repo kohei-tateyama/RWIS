@@ -3,80 +3,131 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class SideScrollingCamera : MonoBehaviour
 {
-    public Transform trackedObject;
+    [Header("Tracked Object")]
+    [SerializeField] private Transform trackedObject;
+
+    [Header("Scene")]
+    [SerializeField] private string scene;
     
-    public float hallwayHeight;
-    public float hallwayMinX;
-    public float hallwayMaxX;
+    private float hallwayHeight = 4.5f;
+    private float hallwayMinX = -40f;
+    private float hallwayMaxX = 60f;
 
-    public float classroomHeight;
-    public float classroomThreshold;
-    public float classroomMinX;
-    public float classroomMaxX;
+    private float classroomHeight = -20f;
+    public float classroomThreshold = -10f;
+    private float classroomMinX = -40;
+    private float classroomMaxX = 30;
 
-    public float teachersRoomHeight;
-    public float teachersRoomThreshold;
-    public float teachersRoomMinX;
-    public float teachersRoomMaxX;
+    private float teachersRoomHeight = 20f;
+    public float teachersRoomThreshold = 10f;
+    private float teachersRoomMinX = 9.6f;
+    private float teachersRoomMaxX = 11.8f;
     
-    public float homeHeight;
-    public float homeThreshold;
-    public float homeMinX;
-    public float homeMaxX;
+    private float homeHeight = 40f;
+    public float homeThreshold = 30f;
+    private float homeMinX = -21f;
+    private float homeMaxX = 21f;
 
+    private float spaceportHeight = 2.2f;
+    private float spaceportMinX = -70f;
+    private float spaceportMaxX = 45f;
+
+    public SideScrollingCamera Instance { get; private set; }
 
     private void LateUpdate()
     {
-        // cameraPosition.x = trackedObject.position.x;
-        float minX, maxX;
-        Vector3 cameraPosition = transform.position;
-
-        if (transform.position.y > teachersRoomThreshold && transform.position.y < homeThreshold)
-        {
-            minX = teachersRoomMinX;
-            maxX = teachersRoomMaxX;
-        }
-        else if (transform.position.y > homeThreshold)
-        {
-            minX = homeMinX;
-            maxX = homeMaxX;
-        }
-        else if (transform.position.y < classroomThreshold)
-        {
-            minX = classroomMinX;
-            maxX = classroomMaxX;
-        }
-        else
-        {
-            minX = hallwayMinX;
-            maxX = hallwayMaxX;
-        }
-        
-        cameraPosition.x = Mathf.Clamp(trackedObject.position.x, minX + 0.5f, maxX - 0.5f);
-        transform.position = cameraPosition;
+        ClampCameraInScene();
     }
 
-    public void MoveCharacter(float newPosition)
+    public void MoveCamera(Vector2 newPosition)
     {
         Vector3 cameraPosition = transform.position;
         
-        if (newPosition > teachersRoomThreshold && newPosition < homeThreshold)
+        switch (scene)
         {
-            cameraPosition.y = teachersRoomHeight + hallwayHeight;
-        }
-        else if (newPosition > homeThreshold)
-        {
-            cameraPosition.y = homeHeight + hallwayHeight;
-        }
-        else if (newPosition < classroomThreshold)
-        {
-            cameraPosition.y = classroomHeight + hallwayHeight;
-        }
-        else
-        {
-            cameraPosition.y = hallwayHeight;
+            case "Spaceport":
+            {
+                cameraPosition.y = spaceportHeight;
+                break;
+            }
+            case "AllCombined":
+            {
+                if (newPosition.y > teachersRoomThreshold && newPosition.y < homeThreshold)
+                {
+                    cameraPosition.y = teachersRoomHeight + hallwayHeight;
+                }
+                else if (newPosition.y > homeThreshold)
+                {
+                    cameraPosition.y = homeHeight + hallwayHeight;
+                }
+                else if (newPosition.y < classroomThreshold)
+                {
+                    cameraPosition.y = classroomHeight + hallwayHeight;
+                }
+                else
+                {
+                    cameraPosition.y = hallwayHeight;
+                }
+                break;
+            }
+            default:
+            {
+                Debug.LogError("Scene Name incorrect! Check it again in Main Camera object");
+                break;
+            }
         }
         
+        cameraPosition.x = newPosition.x;
+        transform.position = cameraPosition;
+    }
+
+    private void ClampCameraInScene()
+    {
+        float minX, maxX;
+        Vector3 cameraPosition = transform.position;
+
+        switch (scene)
+        {
+            case "Spaceport":
+            {
+                minX = spaceportMinX;
+                maxX = spaceportMaxX;
+                break;
+            }
+            case "AllCombined":
+            {
+                if (transform.position.y > teachersRoomThreshold && transform.position.y < homeThreshold)
+                {
+                    minX = teachersRoomMinX;
+                    maxX = teachersRoomMaxX;
+                }
+                else if (transform.position.y > homeThreshold)
+                {
+                    minX = homeMinX;
+                    maxX = homeMaxX;
+                }
+                else if (transform.position.y < classroomThreshold)
+                {
+                    minX = classroomMinX;
+                    maxX = classroomMaxX;
+                }
+                else
+                {
+                    minX = hallwayMinX;
+                    maxX = hallwayMaxX;
+                }
+                break;
+            }
+            default:
+            {
+                minX = 0f;
+                maxX = 0f;
+                Debug.LogError("Scene Name incorrect! Check it again in Main Camera object");
+                break;
+            }
+        }
+        
+        cameraPosition.x = Mathf.Clamp(trackedObject.position.x, minX + 0.5f, maxX - 0.5f);
         transform.position = cameraPosition;
     }
 
