@@ -8520,34 +8520,6 @@ Transform:
   m_Father: {fileID: 1305583367}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1664828242 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8469206326930996531, guid: b433f43ae731f44ea8eb99796d24106a, type: 3}
-  m_PrefabInstance: {fileID: 206482681}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1664828246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1664828242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 538f8bf5398e3432987a57fb0e864be5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  touchInputPanel: {fileID: 1927775611}
-  OtherDoor: {fileID: 1620412659}
-  HallwayDoor: {fileID: 135279414}
-  sideScrollingCamera: {fileID: 519420030}
-  targetPosition: {fileID: 135279412}
-  glowSprite: {fileID: 2091895323}
-  connection: {fileID: 135279412}
-  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  blinkSpeed: 1
-  shouldAnimate: 0
-  blockMovement: 0
 --- !u!1 &1678122358
 GameObject:
   m_ObjectHideFlags: 0
