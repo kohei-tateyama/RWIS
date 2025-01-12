@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     private RectTransform rectTransformSocialMeter,rectTransformBatteryBar;
 
 
-
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -56,10 +55,6 @@ public class PlayerMovement : MonoBehaviour
         // }else{
         //     HorizontalMovement();
         // }
-
-        
-        
-        
 
         // grounded = rb.Raycast(Vector2.down);
 

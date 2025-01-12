@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
     {
         smallRenderer.enabled = false;
         bigRenderer.enabled = false;
-        deathAnimation.enabled = true;
+        // deathAnimation.enabled = true;
 
         GameManager.Instance.ResetLevel(3f);
     }
