@@ -5,6 +5,7 @@ using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.Audio;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -37,22 +38,17 @@ public class DialogueManager : MonoBehaviour
     public int socialMeterValue { get; private set; }
     public int isFollowingMC {get; private set; }
     public event Action<int> OnSocialValueChangedEvent;
+
+    [Header("Mixer Group - Dialogues")]
+    [SerializeField] private AudioMixerGroup MixerGroupDialogue;
     public event Action<int> OnFollowingMCEvent;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
 
+
+
     
-
-    // [SerializeField] private string audioClipsPath = "Audio/DialogueClips";
-    //[SerializeField] private bool stopAudioSource;
-    //[SerializeField] private DialogueAudioInfoSO defaultAudioInfo;
-    //[SerializeField] private DialogueAudioInfoSO[] audioInfos;
-    //[SerializeField] private bool makePredictable;
-    //private DialogueAudioInfoSO currentAudioInfo;
-    //private Dictionary<string, DialogueAudioInfoSO> audioInfoDictionary;
-
-
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
 
@@ -174,9 +170,15 @@ public class DialogueManager : MonoBehaviour
 
         // Observe changes to 'social_meter'
         currentStory.ObserveVariable("social_meter", OnSocialVariableChanged);
+        currentStory.BindExternalFunction("pause", (float seconds) => { StartCoroutine(PauseCoroutine(seconds));});
         currentStory.ObserveVariable("isGoingToGate", OnFollowingMC);
 
         ContinueStory();
+    }
+
+    private IEnumerator PauseCoroutine(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 
     private IEnumerator ExitDialogueMode() 
@@ -291,6 +293,7 @@ public class DialogueManager : MonoBehaviour
         AudioClip clip = Resources.Load<AudioClip>($"{clipName}");
         if (clip != null)
         {
+            audioSource.outputAudioMixerGroup = MixerGroupDialogue;
             audioSource.PlayOneShot(clip);
         }
         else
