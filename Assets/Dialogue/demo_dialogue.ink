@@ -1,4 +1,4 @@
-// VAR social_meter = 0
+
 -> start
 
 === start ===
@@ -7,7 +7,6 @@
 === spaceport_scene ===
 [You and Dad are at the spaceport, standing near a boarding gate.]
 
-// ~ PlaySound("announcement")
 Announcement: Final call for the outer moon loop. All passengers please come to gate ***teen.
 Mimi: What did they announce?
 #speaker:Mimi    #portrait:Mimi  #layout:right
@@ -43,7 +42,6 @@ Agent: Oh, uh... sorry. Gate 16 is that way.
 === to_ceres_gate ===
 [You and Dad are walking to gate 16. Another announcement plays.]
 
-// ~ PlaySound("announcement")
 Agent 2: Oh, are you here for the Ceres flight? We’ve been calling you for the last five minutes.
 
 MC: Sorry, we–
@@ -56,7 +54,5 @@ Agent 2: Just get on board.
 === boarding_scene ===
 [You and Dad go through the gate and board the flight. A travel montage shows you arriving at your new home.]
 
-// ~ PlayMontage("travel_montage")
-// ~ EndScene
-~ playEmote("exclamation")
+
 -> END

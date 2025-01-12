@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,41 +7,60 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    // public Dictionary<string, Transform> spawnPoints = new Dictionary<string, Transform>(); // Dictionary for keeping spawn points for each scene
+    public Camera mainCamera;
 
-    // public GameObject playerPrefab;
-    // private string previousSceneName;
-
-    public Camera myCamera;
     public int world { get; private set; } = 1;
     public int stage { get; private set; } = 1;
-    public int lives { get; private set; } = 3;
-    public int coins { get; private set; } = 0;
+
+    private Vector2 playerSpawnPosition = new Vector2(0, 3);
+
 
     private void Awake()
     {
-        if (Instance != null) {
+        mainCamera = Camera.main;
+
+        if (Instance != null)
+        {
             DestroyImmediate(gameObject);
-            if (myCamera != null)
+            
+            if (mainCamera != null)
             {
-                myCamera.fieldOfView = 20f;
+                mainCamera.fieldOfView = 20f;
             }
-        } else {
+        }
+        else
+        {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            if (myCamera != null)
+            
+            if (mainCamera != null)
             {
-                myCamera.fieldOfView = 200f;
+                mainCamera.fieldOfView = 200f;
             }
         }
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
+    // This method will be called after a new scene has been loaded
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Set the player's position
+        StartCoroutine(SetPlayerPositionCoroutine(playerSpawnPosition));
+    }
 
     private void OnDestroy()
     {
-        if (Instance == this) {
+        if (Instance == this)
+        {
             Instance = null;
         }
     }
@@ -49,20 +68,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = 60;
-        // NewGame();
-
-        // Populate the spawnPoints dictionary in the editor or at runtime.
-        // Example: spawnPoints.Add("SceneA", GameObject.Find("SpawnPointA").transform);
     }
-
 
     public void NewGame()
     {
-        lives = 3;
-        coins = 0;
-        SceneManager.LoadScene($"Spaceport");
-
-        // LoadLevel(1, 1);
+        SceneManager.LoadScene("Spaceport"); 
     }
 
     public void GameOver()
@@ -82,6 +92,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(room);
     }
 
+    public void LoadRoom(string room, Vector2 playerSpawnPosition)
+    {
+        SceneManager.LoadScene(room);
+        this.playerSpawnPosition = playerSpawnPosition;
+    }
+
     public void NextLevel()
     {
         LoadLevel(world, stage + 1);
@@ -93,31 +109,40 @@ public class GameManager : MonoBehaviour
         Invoke(nameof(ResetLevel), delay);
     }
 
-    public void ResetLevel()
+    private IEnumerator SetPlayerPositionCoroutine(Vector2 newPosition)
     {
-        lives--;
+        // Wait until the end of the frame to ensure all objects are initialized
+        yield return new WaitForEndOfFrame();
 
-        if (lives > 0) {
-            LoadLevel(world, stage);
-        } else {
-            GameOver();
-        }
+        // Now proceed to set player position and move camera
+        SetPlayerPosition(newPosition);
     }
 
-    public void AddCoin()
+    private void SetPlayerPosition(Vector2 newPosition)
     {
-        coins++;
-
-        if (coins == 100)
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null)
         {
-            coins = 0;
-            AddLife();
+            player.transform.position = newPosition;
         }
-    }
+        else
+        {
+            Debug.LogWarning("Player GameObject not found.");
+        }
 
-    public void AddLife()
-    {
-        lives++;
+        mainCamera = Camera.main;
+        if (mainCamera != null)
+        {
+            SideScrollingCamera sideScrolling = mainCamera.GetComponent<SideScrollingCamera>();
+            if (sideScrolling != null)
+            {
+                sideScrolling.MoveCamera(newPosition);
+            }
+            else
+            {
+                Debug.LogWarning("Camera-SideScrolling script not found.");
+            }
+        }
     }
 
 }

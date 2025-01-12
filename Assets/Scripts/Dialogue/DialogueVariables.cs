@@ -13,6 +13,7 @@ public class DialogueVariables
     {
         // create the story
         globalVariablesStory = new Story(loadGlobalsJSON.text);
+        
         // if we have saved data, load it
         // if (PlayerPrefs.HasKey(saveVariablesKey))
         // {
@@ -26,7 +27,7 @@ public class DialogueVariables
         {
             Ink.Runtime.Object value = globalVariablesStory.variablesState.GetVariableWithName(name);
             variables.Add(name, value);
-            Debug.Log("Initialized global dialogue variable: " + name + " = " + value);
+            // Debug.Log("Initialized global dialogue variable: " + name + " = " + value);
         }
     }
 
@@ -36,8 +37,8 @@ public class DialogueVariables
         {
             // Load the current state of all of our variables to the globals story
             VariablesToStory(globalVariablesStory);
-            // NOTE: eventually, you'd want to replace this with an actual save/load method
-            // rather than using PlayerPrefs.
+            
+            // NOTE: replace this with an actual save/load method rather than using PlayerPrefs.
             PlayerPrefs.SetString(saveVariablesKey, globalVariablesStory.state.ToJson());
         }
     }
@@ -56,6 +57,7 @@ public class DialogueVariables
 
     private void VariableChanged(string name, Ink.Runtime.Object value) 
     {
+        Debug.Log("Variable changed: " + name + ": " + value);
         // only maintain variables that were initialized from the globals ink file
         if (variables.ContainsKey(name)) 
         {

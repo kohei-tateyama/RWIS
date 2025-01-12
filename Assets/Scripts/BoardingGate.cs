@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoardingGate : MonoBehaviour{
-    private SpriteRenderer spriteRenderer;
     private bool playerInRange;
 
     private void Awake() 
@@ -17,8 +14,8 @@ public class BoardingGate : MonoBehaviour{
         {        
             if (InputManager.Instance.GetInteractPressed()) 
             {
-                // Change scene / enter room
-                GameManager.Instance.LoadRoom("AllCombined");
+                // make player spawn at home
+                GameManager.Instance.LoadRoom("AllCombined", new Vector2(-20, 44));
             }
         }
     }

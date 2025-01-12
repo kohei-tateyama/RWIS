@@ -6,9 +6,9 @@ public class PlayerSpriteRenderer : MonoBehaviour
     private PlayerMovement movement;
     public SpriteRenderer spriteRenderer { get; private set; }
     public Sprite idle;
+    public AnimatedSprite run;
     // public Sprite jump;
     // public Sprite slide;
-    public AnimatedSprite run;
 
     private void Awake()
     {
@@ -25,7 +25,8 @@ public class PlayerSpriteRenderer : MonoBehaviour
         // } else if (movement.sliding) {
         //     spriteRenderer.sprite = slide;
         // } else if (!movement.running) {
-            if (!movement.running) {
+        
+        if (!movement.running) {
             spriteRenderer.sprite = idle;
         }
     }
