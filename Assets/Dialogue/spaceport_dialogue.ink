@@ -1,4 +1,7 @@
 INCLUDE globals.ink
+VAR pause = 2
+VAR social_meter = 0
+-> outer_moon_loop
 
 === outer_moon_loop ===
 Announcement: Final call for the outer moon loop. All passengers please come to gate 12. #speaker:Announcement #audio:staticy_announcement #layout:center
