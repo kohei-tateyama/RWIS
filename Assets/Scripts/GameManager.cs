@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene($"Spaceport");
+        SceneManager.LoadScene("Spaceport"); 
     }
 
     public void GameOver()
