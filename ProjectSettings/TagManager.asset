@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - NPC
+  - m_home
+  - m_hallway
+  - m_classroom
   layers:
   - Default
   - TransparentFX
