@@ -30,6 +30,8 @@ Layla: I’m trying to make a cake for Sasha’s birthday and I forgot I ran out
 
 + [What do I need to order?]
 ~ social_meter = social_meter - 1
+    Mimi: What do I need to order? #speaker:Mimi #portrait:mimi #audio:Class_After_10
+    
     Layla: Baking powder #speaker:Layla #portrait:layla #audio:Class_After_7
     -> OK
 === OK ===
