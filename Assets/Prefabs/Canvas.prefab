@@ -1188,6 +1188,7 @@ GameObject:
   - component: {fileID: 4987613406366226543}
   - component: {fileID: 4987613406366226540}
   - component: {fileID: 4987613406366226542}
+  - component: {fileID: 2860001793937183307}
   m_Layer: 5
   m_Name: DialoguePanel
   m_TagString: Untagged
@@ -1280,6 +1281,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2860001793937183307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987613406366226530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0286e38b9d4bf442b8e13870a293ab63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTask: {fileID: 211526624}
 --- !u!1 &4987613406368345140
 GameObject:
   m_ObjectHideFlags: 0
@@ -3602,6 +3616,10 @@ PrefabInstance:
     - target: {fileID: 4807537574575434191, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
       propertyPath: m_DrawMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4807537574575434191, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6924430438932398369, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
       propertyPath: m_SortingOrder
