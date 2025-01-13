@@ -37,5 +37,5 @@ Layla: I’m trying to make a cake for Sasha’s birthday and I forgot I ran out
 === OK ===
     Mimi: OK #speaker:Mimi #portrait:mimi #audio:Class_After_8
     Layla: Awesome you're the best. #speaker:Layla #portrait:layla #audio:Class_After_9
-
+~goal = "ask_dad_for_item"
     -> END
