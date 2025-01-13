@@ -6294,6 +6294,7 @@ Transform:
   m_Children:
   - {fileID: 1884029335}
   - {fileID: 25429430}
+  - {fileID: 684103462}
   m_Father: {fileID: 1769890432}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7601,14 +7602,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4987613406645383798, guid: 5a2d3936c12f049de8cfb772e1d147ac, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 4987613406977803395, guid: 5a2d3936c12f049de8cfb772e1d147ac, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 611553215}
-    - target: {fileID: 7780265734264774008, guid: 5a2d3936c12f049de8cfb772e1d147ac, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a2d3936c12f049de8cfb772e1d147ac, type: 3}
 --- !u!1001 &5203263855812727055

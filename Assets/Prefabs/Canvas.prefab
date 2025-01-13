@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -134, y: 181}
+  m_AnchoredPosition: {x: -157.5, y: 152}
   m_SizeDelta: {x: 435, y: 46.0426}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &211526628
@@ -94,10 +94,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.25
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -2020,7 +2020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -75, y: 70}
+  m_AnchoredPosition: {x: -99, y: 70}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4987613406534283389
@@ -2262,7 +2262,7 @@ Canvas:
   m_GameObject: {fileID: 4987613406645383797}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2273,7 +2273,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &4987613406645383799
 MonoBehaviour:
@@ -2526,7 +2526,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -41, y: 412}
+  m_AnchoredPosition: {x: -57, y: 340}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4987613406857700715
@@ -3668,6 +3668,18 @@ PrefabInstance:
     - target: {fileID: 8311033373469803851, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311033373510218884, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 24.416199
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311033373510218884, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.1248999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311033373619146409, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -9.291306
       objectReference: {fileID: 0}
     - target: {fileID: 8311033373899897244, guid: 8cf712823e17e4de1be7948dd9b99e6b, type: 3}
       propertyPath: m_AnchorMax.y
