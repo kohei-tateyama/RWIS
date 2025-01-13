@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class CurrentTask : MonoBehaviour
 {
     // Reference to the TextMeshPro component
@@ -8,7 +9,11 @@ public class CurrentTask : MonoBehaviour
 
     private void Update()
     {
-        if (StoryManager.Instance.goal == "spaceport_dad")
+        if (StoryManager.Instance.goal == "spaceport" && SceneManager.GetActiveScene().name == "AllCombined")
+        {
+            SetText("Look for dad");
+        }
+        else if (StoryManager.Instance.goal == "spaceport")
         {
             SetText("Talk to dad");
         }
@@ -23,6 +28,18 @@ public class CurrentTask : MonoBehaviour
         else if (StoryManager.Instance.goal == "go_to_class")
         {
             SetText("Go to the Classroom");
+        }
+        else if (StoryManager.Instance.goal == "talk_to_miko")
+        {
+            SetText("Talk with your Classmates");
+        }
+        else if (StoryManager.Instance.goal == "go_home")
+        {
+            SetText("Go Home");
+        }
+        else if (StoryManager.Instance.goal == "ask_dad_for_item")
+        {
+            SetText("Ask dad about baking stuff");
         }
         else
         {

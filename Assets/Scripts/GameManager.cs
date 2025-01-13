@@ -72,7 +72,8 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene("Spaceport"); 
+        SceneManager.LoadScene("Spaceport");
+        this.playerSpawnPosition = new Vector2(0, -1.05f);
     }
 
     public void GameOver()

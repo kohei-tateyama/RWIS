@@ -10,7 +10,7 @@ public class BoardingGate : MonoBehaviour{
 
     private void Update() 
     {
-        if (StoryManager.Instance.goal == "go_to_gate" && 
+        if (/*StoryManager.Instance.goal == "go_to_gate" && */
             playerInRange && 
             !DialogueManager.Instance.dialogueIsPlaying) 
         {        
