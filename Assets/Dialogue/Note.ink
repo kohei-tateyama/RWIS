@@ -12,5 +12,5 @@ Love, Dad
 
 === finish ===
 
-~ class_session = "go_to_registration"
+~ goal = "go_to_registration"
 -> END
