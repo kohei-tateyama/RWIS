@@ -22,7 +22,7 @@ Layla: Has your family put in your food order yet? #audio:Class_After_2
     -> Layla_explanation
 
 === Layla_explanation ===
-Layla: I’m trying to make a cake for Sasha’s birthday and I forgot I ran out of baking powder. Could you order it for me? Please please please. #speaker:Layla #portrait:layla  #layout:left #audio:Class_After_6
+Layla: I’m trying to make a cake for Sasha’s birthday and I forgot I ran out of **** ****. Could you order it for me? Please please please. #speaker:Layla #portrait:layla  #layout:left #audio:Class_After_6
 
 + [OK]
 

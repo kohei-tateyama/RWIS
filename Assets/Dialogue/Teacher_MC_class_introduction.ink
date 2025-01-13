@@ -25,7 +25,7 @@ Teacher: Thank you, you can sit there.  #speaker:Teacher #portrait:teacher #layo
 -> classmate_interaction
 
 === classmate_interaction ===
-CM (whisper): Hi, I'm {classmate_name}. #speaker:classmate    #portrait:default  #layout:right #audio:Class_Teacher_6
+CM (whisper): Hi, I'm ****. #speaker:classmate    #portrait:default  #layout:right #audio:Class_Teacher_6
 
 MIMI: (You try to recall the classmate's name.) #input_required:name #speaker:Mimi    #portrait:mimi 
 
@@ -42,7 +42,7 @@ MIMI: (You try to recall the classmate's name.) #input_required:name #speaker:Mi
 }
 
 === classmate_repeating1 ===
-CM: My name is {classmate_name}. #audio:Class_Teacher_9
+CM: My name is ****. #audio:Class_Teacher_9
 
 MIMI: (You try to recall the classmate's name.) #input_required:name  #speaker:Mimi    #portrait:mimi  #layout:right
 (You try to recall the classmate's name.)
