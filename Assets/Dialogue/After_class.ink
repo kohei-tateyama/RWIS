@@ -22,7 +22,7 @@ Layla: Has your family put in your food order yet? #audio:Class_After_2
     -> Layla_explanation
 
 === Layla_explanation ===
-Layla: I’m trying to make a cake for Sasha’s birthday and I forgot I ran out of baking powder. Could you order it for me? Please please please. #speaker:Layla #portrait:layla  #layout:left #audio:Class_After_6
+Layla: I’m trying to make a cake for Sasha’s birthday and I forgot I ran out of **** ****. Could you order it for me? Please please please. #speaker:Layla #portrait:layla  #layout:left #audio:Class_After_6
 
 + [OK]
 
@@ -30,10 +30,12 @@ Layla: I’m trying to make a cake for Sasha’s birthday and I forgot I ran out
 
 + [What do I need to order?]
 ~ social_meter = social_meter - 1
+    Mimi: What do I need to order? #speaker:Mimi #portrait:mimi #audio:Class_After_10
+    
     Layla: Baking powder #speaker:Layla #portrait:layla #audio:Class_After_7
     -> OK
 === OK ===
     Mimi: OK #speaker:Mimi #portrait:mimi #audio:Class_After_8
     Layla: Awesome you're the best. #speaker:Layla #portrait:layla #audio:Class_After_9
-
+~goal = "ask_dad_for_item"
     -> END

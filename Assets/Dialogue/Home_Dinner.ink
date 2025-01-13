@@ -8,8 +8,11 @@ Dad: Welcome home. How was school? #speaker:Dad  #portrait:dad  #layout:right #a
 Mimi: Good enough. How was work?  #speaker:Mimi    #portrait:mimi  #layout:right #audio:Home_Dinner_2
 
 Dad: We just did safety and orientation stuff today. Tomorrow I’ll start working in the lab properly. #speaker:Dad  #portrait:dad  #layout:right #audio:Home_Dinner_3
+
+#audio:Home_Dinner_4
 Dad: It looks like I’ll have to be on the early shift for the next few months so you’ll have to take care of your own breakfast.
- #speaker:Dad  #portrait:dad  #layout:right #audio:Home_Dinner_4
+ #speaker:Dad  #portrait:dad  #layout:right 
+ 
 Mimi: That’s fine, I’m a big girl. #speaker:Mimi    #portrait:mimi  #layout:right #audio:Home_Dinner_5
 
 Dad: Do you want anything in particular? We have to put in our grocery order tonight. #speaker:Dad  #portrait:dad  #layout:right #audio:Home_Dinner_6

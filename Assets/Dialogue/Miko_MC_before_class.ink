@@ -19,4 +19,5 @@ Teacher: All right, before we get started I just want to remind you that our fie
 #speaker:Teacher #portrait:teacher #layout:left #audio:Class_Miko_4
 Teacher: I will hand out permission slips at the end of class so please have your guardian sign them by Friday. 
 
+~goal = "go_home"
 -> END
