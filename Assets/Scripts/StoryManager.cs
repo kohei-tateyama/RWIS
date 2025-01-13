@@ -4,9 +4,10 @@ public class StoryManager : MonoBehaviour
 {
     public static StoryManager Instance { get; private set; }
 
-    public string day_of_the_week; // Possible values: "monday", "tuesday", "wednesday", ...
-    public string time_of_day;     // Possible values: "morning", "afternoon", "evening"
-    public string class_session;   // Possible values: "before_class", "during_class", "after_class"
+    public string day_of_the_week { get; private set; }  // "monday", "tuesday", "wednesday", ...
+    public string time_of_day     { get; private set; }  // "morning", "afternoon", "evening"
+    public string class_session   { get; private set; }  // "before_class", "during_class", "after_class"
+    
 
     private void Awake()
     {
@@ -14,6 +15,9 @@ public class StoryManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            day_of_the_week = "monday";
+            time_of_day = "morning";
+            class_session = "before_class";
         }
         else
         {

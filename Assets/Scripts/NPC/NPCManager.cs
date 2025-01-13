@@ -19,13 +19,33 @@ public class NPCManager : MonoBehaviour
         {
             case "Dad":
             {
-                if (StoryManager.Instance.day_of_the_week == "monday" && StoryManager.Instance.time_of_day == "morning")
+                if (StoryManager.Instance.day_of_the_week == "monday" && 
+                    StoryManager.Instance.time_of_day == "morning")
                 {
                     gameObject.SetActive(false);
                 }
-                else
+                else if (StoryManager.Instance.day_of_the_week == "monday" && 
+                         StoryManager.Instance.time_of_day == "evening")
                 {
                     gameObject.SetActive(true);
+                }
+                break;
+            }
+            case "Miko":
+            {
+                
+                break;
+            }
+            case "Note":
+            {
+                if (StoryManager.Instance.day_of_the_week == "monday" && 
+                    StoryManager.Instance.time_of_day == "morning")
+                {
+                    gameObject.SetActive(true);
+                }
+                else
+                {
+                    gameObject.SetActive(false);
                 }
                 break;
             }

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -15,13 +14,26 @@ public class Player : MonoBehaviour
     private int currentHearingDeviceBattery;
 
 
+    private void Awake()
+    {
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        movement = GetComponent<PlayerMovement>();
+    }
+
     private void Start(){
         maxSocialPoints = ((Ink.Runtime.IntValue) DialogueManager.Instance.GetVariableState("social_meter")).value;
         currentSocialPoints = maxSocialPoints;
         socialMeter.SetMaxSocialPoints(maxSocialPoints);
         
-        currentHearingDeviceBattery = maxHearingDeviceBattery;
-        batteryBar.SetMaxBattery(maxHearingDeviceBattery);
+        if (batteryBar != null)
+        {
+            batteryBar.SetMaxBattery(maxHearingDeviceBattery);
+            currentHearingDeviceBattery = maxHearingDeviceBattery;
+        }
+        else
+        {
+            Debug.Log("Battery bar not yet implemented");
+        }
     }
 
     private void Update(){
@@ -42,12 +54,6 @@ public class Player : MonoBehaviour
     private void Battery(int battery){
         currentHearingDeviceBattery += battery;
         batteryBar.SetBattery(currentHearingDeviceBattery);
-    }
-    
-    private void Awake()
-    {
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
-        movement = GetComponent<PlayerMovement>();
     }
 
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7462724404717548649}
   - component: {fileID: 5866400612681068058}
   m_Layer: 5
-  m_Name: Canvas SM
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1008,7 +1008,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpriteRenderer: {fileID: 0}
   socialMeter: {fileID: 4581941900711023423}
-  maxSocialPoints: 100
   batteryBar: {fileID: 0}
   maxHearingDeviceBattery: 100
 --- !u!114 &5871344987704785112

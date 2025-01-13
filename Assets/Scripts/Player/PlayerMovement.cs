@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public bool grounded { get; private set; }
     public bool running => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis.x) > 0.25f;
     
-    private RectTransform rectTransformSocialMeter, rectTransformBatteryBar;
+    private RectTransform canvasRectTransform;
 
 
     private void Awake()
@@ -28,10 +28,15 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<Collider2D>();
         
-        Transform childObjectBattery = transform.Find("Canvas Battery");
-        Transform childObjectSocialMeter = transform.Find("Canvas SM");
-        rectTransformBatteryBar = childObjectBattery.GetComponent<RectTransform>();
-        rectTransformSocialMeter = childObjectSocialMeter.GetComponent<RectTransform>();
+        Transform canvasTransform = transform.Find("Canvas");
+        if (canvasTransform != null)
+        {
+            canvasRectTransform = canvasTransform.GetComponent<RectTransform>();
+        }
+        else
+        {
+            Debug.LogWarning("Canvas child GameObject not found under Player.");
+        }
     }
 
     private void OnEnable()
@@ -84,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // Accelerate / decelerate
         inputAxis = InputManager.Instance.GetMoveDirection();
-        
     
         // make player move at constant speed
         velocity.x = inputAxis.x * moveSpeed;
@@ -95,15 +99,17 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Flip sprite to face direction
-        if (velocity.x > 0f) {
+        if (velocity.x > 0f) 
+        {
             transform.eulerAngles = Vector3.zero;
-            rectTransformBatteryBar.eulerAngles = Vector3.zero;
-            rectTransformSocialMeter.eulerAngles = Vector3.zero;
-        } else if (velocity.x < 0f) {
+        } 
+        else if (velocity.x < 0f) 
+        {
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
-            rectTransformBatteryBar.eulerAngles = Vector3.zero;
-            rectTransformSocialMeter.eulerAngles = Vector3.zero;
         }
+
+        // Avoid socail meter canvas to rotate with the player
+        canvasRectTransform.eulerAngles = Vector3.zero;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

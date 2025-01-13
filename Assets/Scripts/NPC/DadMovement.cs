@@ -6,6 +6,7 @@ public class DadMovement : MonoBehaviour
     private Camera mainCamera;
     private Rigidbody2D rb;
     private Collider2D capsuleCollider;
+    private Transform visualCueTransform;
 
     private Vector2 velocity;
     private Vector2 inputAxis;
@@ -27,6 +28,12 @@ public class DadMovement : MonoBehaviour
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody2D>();
         capsuleCollider = GetComponent<Collider2D>();
+
+        visualCueTransform = transform.Find("VisualCue");
+        if (visualCueTransform == null)
+        {
+            Debug.LogWarning("VisualCue child GameObject not found under NPC-Dad.");
+        }
     }
 
     private void OnEnable()
@@ -55,6 +62,7 @@ public class DadMovement : MonoBehaviour
         {
             isFollowing = true;
         }
+
         Follow();
         HorizontalMovement();
         ApplyGravity();
@@ -93,6 +101,9 @@ public class DadMovement : MonoBehaviour
         } else if (velocity.x < 0f) {
             transform.eulerAngles = new Vector3(0f, 180f, 0f);
         }
+
+        // Avoid visual cue to rotate with the player
+        visualCueTransform.eulerAngles = Vector3.zero;
     }
 
     private void ApplyGravity()
