@@ -2431,9 +2431,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2102838010}
     m_Modifications:
+    - target: {fileID: 543435167214122335, guid: e7ee4c7dac0fe4cf6986bab954d52b9f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 770164304556084166, guid: e7ee4c7dac0fe4cf6986bab954d52b9f, type: 3}
       propertyPath: m_Name
       value: Dad
+      objectReference: {fileID: 0}
+    - target: {fileID: 770164304556084166, guid: e7ee4c7dac0fe4cf6986bab954d52b9f, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 770164304556084166, guid: e7ee4c7dac0fe4cf6986bab954d52b9f, type: 3}
       propertyPath: m_TagString
@@ -2446,6 +2454,14 @@ PrefabInstance:
     - target: {fileID: 3828474661358214055, guid: e7ee4c7dac0fe4cf6986bab954d52b9f, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274609423977799106, guid: e7ee4c7dac0fe4cf6986bab954d52b9f, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4422795811487906711, guid: e7ee4c7dac0fe4cf6986bab954d52b9f, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4919443066207273907, guid: e7ee4c7dac0fe4cf6986bab954d52b9f, type: 3}
       propertyPath: m_LocalPosition.x
