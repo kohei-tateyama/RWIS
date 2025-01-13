@@ -25,7 +25,7 @@ Dad: Our flight will board in 5 minutes we should go to the gate. #speaker:dad #
     -> finish
 
 === finish ===
-~class_session="go_to_gate"
+~goal="go_to_gate"
 
 -> END
 
