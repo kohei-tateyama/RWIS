@@ -4,9 +4,8 @@ INCLUDE globals.ink
 
 === main ===
 
-#speaker:dad #portrait:dad
-Sorry I couldn’t be there for you today. Good luck at school.
-Love, Dad
+#speaker:dad #portrait:dad #audio:Note_Monday_1
+Sorry I couldn’t be there for you today. Good luck at school. Love, Dad
 
 -> finish
 
