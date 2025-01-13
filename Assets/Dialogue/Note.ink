@@ -1,4 +1,4 @@
-﻿INCLUDE globals.ink
+INCLUDE globals.ink
 
 -> main
 
@@ -12,4 +12,5 @@ Love, Dad
 
 === finish ===
 
+~ goal = "go_to_registration"
 -> END

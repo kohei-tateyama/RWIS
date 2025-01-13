@@ -6,17 +6,17 @@ INCLUDE globals.ink
 -> spaceport_scene
 
 === spaceport_scene ===
-[You and Dad are at the spaceport, standing near a boarding gate.] #speaker:narrator
+[You and Dad are at the spaceport, standing near a boarding gate.] #speaker:narrator 
 
-Final call for the outer moon loop. All passengers please come to gate ***teen. #speaker:speaker
+Announce: Final call for the outer moon loop. All passengers please come to gate ***teen. #speaker:speaker #audio:Spaceport_Dialogue_1
 
-What did they announce? #speaker:mimi #portrait:mimi #layout:right
+Mimi: What did they announce? #speaker:mimi #portrait:mimi #layout:right #audio:Spaceport_Dialogue_2
 
-That’s not for our flight. #speaker:dad #portrait:dad #layout:right
+Dad: That’s not for our flight. #speaker:dad #portrait:dad #layout:right #audio:Spaceport_Dialogue_3
 
-The shuttle flight to Aulus will begin boarding in 5 minutes. Please proceed to gate 15. #speaker:speaker
+Announce: The shuttle flight to Aulus will begin boarding in 5 minutes. Please proceed to gate 15. #speaker:speaker #audio:Spaceport_Dialogue_4
 
-Our flight will board in 5 minutes we should go to the gate. #speaker:dad #portrait:dad #layout:right
+Dad: Our flight will board in 5 minutes we should go to the gate. #speaker:dad #portrait:dad #layout:right #audio:Spaceport_Dialogue_5
 + [Yes]
     ~ isGoingToGate = 1
     -> finish
@@ -25,5 +25,7 @@ Our flight will board in 5 minutes we should go to the gate. #speaker:dad #portr
     -> finish
 
 === finish ===
+~goal="go_to_gate"
 
 -> END
+
