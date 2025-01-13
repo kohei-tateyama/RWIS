@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
@@ -8,7 +9,7 @@ public class DialogueTrigger : MonoBehaviour
     [Header("Ink JSON")]
     [SerializeField] private TextAsset inkJSON;
 
-    private bool playerInRange;
+    public bool playerInRange {get; private set;}
 
     private void Awake() 
     {
@@ -16,7 +17,7 @@ public class DialogueTrigger : MonoBehaviour
         visualCue.SetActive(false);
     }
 
-    private void Update() 
+    private void Update()
     {
         if (playerInRange && !DialogueManager.Instance.dialogueIsPlaying) 
         {
@@ -32,11 +33,18 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
+    public IEnumerator AutomaticDialoguePlay()
+    {
+        yield return new WaitForEndOfFrame();
+        DialogueManager.Instance.EnterDialogueMode(inkJSON);
+    }
+
     private void OnTriggerEnter2D(Collider2D collider) 
     {
         if (collider.gameObject.tag == "Player")
         {
             playerInRange = true;
+            StartCoroutine(collider.gameObject.GetComponent<PlayerMovement>().SetVelocityToZero());
         }
     }
 

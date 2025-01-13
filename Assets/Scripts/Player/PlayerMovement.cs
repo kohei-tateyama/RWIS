@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 18f;
     
     public bool grounded { get; private set; }
-    public bool running => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis.x) > 0.25f;
+    public bool running = false;
     
     private RectTransform canvasRectTransform;
 
@@ -110,6 +111,13 @@ public class PlayerMovement : MonoBehaviour
 
         // Avoid socail meter canvas to rotate with the player
         canvasRectTransform.eulerAngles = Vector3.zero;
+
+        SetVelocity();
+    }
+
+    private void SetVelocity()
+    {
+        running = Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis.x) > 0.25f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -139,6 +147,14 @@ public class PlayerMovement : MonoBehaviour
         // Apply gravity and terminal velocity
         velocity.y += gravity * multiplier * Time.deltaTime;
         velocity.y = Mathf.Max(velocity.y, gravity / 2f);
+    }
+
+    public IEnumerator SetVelocityToZero()
+    {
+        yield return new WaitForEndOfFrame();
+        velocity = Vector2.zero;
+        inputAxis = Vector2.zero;
+        SetVelocity();
     }
 
 }

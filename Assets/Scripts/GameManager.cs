@@ -80,6 +80,13 @@ public class GameManager : MonoBehaviour
         NewGame();
     }
 
+    public IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(3);
+
+        SceneManager.LoadScene("ToBeContinued");
+    }
+
     public void LoadLevel(int world, int stage)
     {
         this.world = world;

@@ -7,4 +7,4 @@ VAR day_of_the_week = "monday"     // Possible values: "monday", "tuesday", "wed
 VAR time_of_day = "morning"        // Possible values: "morning", "afternoon", "evening"
 VAR class_session = "before_class" // Possible values: "before_class", "during_class", "after_class"
 
-VAR goal = "talk_to_dad"
+VAR goal = "spaceport"

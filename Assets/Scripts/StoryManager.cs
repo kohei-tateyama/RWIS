@@ -16,10 +16,7 @@ public class StoryManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            day_of_the_week = "monday";
-            time_of_day = "morning";
-            class_session = "before_class";
-            goal = "";
+            UpdateVariables();
         }
         else
         {
@@ -38,6 +35,12 @@ public class StoryManager : MonoBehaviour
         time_of_day = ((Ink.Runtime.StringValue) DialogueManager.Instance.GetVariableState("time_of_day")).value;
         class_session = ((Ink.Runtime.StringValue) DialogueManager.Instance.GetVariableState("class_session")).value;
         goal = ((Ink.Runtime.StringValue) DialogueManager.Instance.GetVariableState("goal")).value;
+        
+        if (goal == "tbc")
+        {
+            StartCoroutine(GameManager.Instance.EndGame());
+        }
+
     }
 
     private void HandleVariableChange(string variableName, object newValue)

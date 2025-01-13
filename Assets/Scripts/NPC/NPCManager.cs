@@ -6,9 +6,22 @@ public class NPCManager : MonoBehaviour
 
     private BoxCollider2D trigger;
 
+    private AnimatedSprite animatedSprite;
+
+    private DialogueTrigger dialogueTrigger;
+
+    private bool playDialogue = true;
+
+
     private void Awake() {
         NPCName = gameObject.name;
         trigger = gameObject.GetComponentInChildren<BoxCollider2D>();
+        dialogueTrigger = GetComponentInChildren<DialogueTrigger>();
+
+        if (NPCName == "Miko")
+        {
+            animatedSprite = GetComponentInChildren<AnimatedSprite>();
+        }
     }
 
     private void Update()
@@ -22,21 +35,72 @@ public class NPCManager : MonoBehaviour
         {
             case "Dad":
             {
-                if (StoryManager.Instance.day_of_the_week == "monday" && 
-                    StoryManager.Instance.time_of_day == "morning")
+                if (StoryManager.Instance.goal == "ask_dad_for_item" || StoryManager.Instance.goal == "tbc")
                 {
-                    gameObject.SetActive(false);
+                    foreach (Transform child in transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
                 }
-                else if (StoryManager.Instance.day_of_the_week == "monday" && 
-                         StoryManager.Instance.time_of_day == "evening")
+                else
                 {
-                    gameObject.SetActive(true);
+                    foreach (Transform child in transform)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                }
+                break;
+            }
+            case "Layla":
+            {
+                if (StoryManager.Instance.goal == "go_home" || StoryManager.Instance.goal == "ask_dad_for_item")
+                {
+                    foreach (Transform child in transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+
+                    if (dialogueTrigger.playerInRange && playDialogue)
+                    {
+                        playDialogue = false;
+                        StartCoroutine(dialogueTrigger.AutomaticDialoguePlay());
+                    }
+
+                    if (StoryManager.Instance.goal != "go_home")
+                    {
+                        trigger.enabled = false;
+                    }
+                }
+                else
+                {
+                    foreach (Transform child in transform)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
                 }
                 break;
             }
             case "Miko":
             {
-                if (StoryManager.Instance.goal == "talk_to_miko")
+                if (StoryManager.Instance.goal == "talk_to_Miko")
+                {
+                    trigger.enabled = true;
+                    if (dialogueTrigger.playerInRange &&
+                        DialogueManager.Instance.dialogueIsPlaying == true)
+                    {
+                        animatedSprite.enabled = true;
+                    }
+                }
+                else
+                {
+                    animatedSprite.enabled = false;
+                    trigger.enabled = false;
+                }
+                break;
+            }
+            case "Teacher":
+            {
+                if (StoryManager.Instance.goal == "go_to_class")
                 {
                     trigger.enabled = true;
                 }
@@ -46,9 +110,9 @@ public class NPCManager : MonoBehaviour
                 }
                 break;
             }
-            case "Teacher":
+            case "HeadTeacher":
             {
-                if (StoryManager.Instance.goal == "talk to teacher")
+                if (StoryManager.Instance.goal == "go_to_registration")
                 {
                     trigger.enabled = true;
                 }
@@ -60,20 +124,24 @@ public class NPCManager : MonoBehaviour
             }
             case "Note":
             {
-                if (StoryManager.Instance.day_of_the_week == "monday" && 
-                    StoryManager.Instance.time_of_day == "morning")
+                if (StoryManager.Instance.goal == "spaceport")
                 {
-                    gameObject.SetActive(true);
+                    foreach (Transform child in transform)
+                    {
+                        child.gameObject.SetActive(true);
+                    }
                 }
                 else
                 {
-                    gameObject.SetActive(false);
+                    foreach (Transform child in transform)
+                    {
+                        child.gameObject.SetActive(false);
+                    }
                 }
                 break;
             }
             default:
             {
-                Debug.LogWarning("NPC name case not handled! Check again");
                 break;
             }
         }

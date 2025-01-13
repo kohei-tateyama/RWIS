@@ -1,3 +1,4 @@
+INCLUDE globals.ink
 
 -> home
 
@@ -30,5 +31,7 @@ Dad: Are you going to take up baking? #speaker:Dad  #portrait:dad  #layout:right
 Mimi: No, one of my classmates missed her order. She’s trying to make a birthday cake. #speaker:Mimi  #portrait:mimi  #layout:right #audio:Home_Dinner_10
 
 Dad: Ok I’ll put that in. #speaker:Dad  #portrait:dad  #layout:right #audio:Home_Dinner_11
+
+~goal = "tbc"
 
 -> END
