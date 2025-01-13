@@ -7,7 +7,8 @@ public class StoryManager : MonoBehaviour
     public string day_of_the_week { get; private set; }  // "monday", "tuesday", "wednesday", ...
     public string time_of_day     { get; private set; }  // "morning", "afternoon", "evening"
     public string class_session   { get; private set; }  // "before_class", "during_class", "after_class"
-    
+    public string goal            { get; private set; }  // next goal of the story
+
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class StoryManager : MonoBehaviour
             day_of_the_week = "monday";
             time_of_day = "morning";
             class_session = "before_class";
+            goal = "";
         }
         else
         {
@@ -35,6 +37,7 @@ public class StoryManager : MonoBehaviour
         day_of_the_week = ((Ink.Runtime.StringValue) DialogueManager.Instance.GetVariableState("day_of_the_week")).value;
         time_of_day = ((Ink.Runtime.StringValue) DialogueManager.Instance.GetVariableState("time_of_day")).value;
         class_session = ((Ink.Runtime.StringValue) DialogueManager.Instance.GetVariableState("class_session")).value;
+        goal = ((Ink.Runtime.StringValue) DialogueManager.Instance.GetVariableState("goal")).value;
     }
 
     private void HandleVariableChange(string variableName, object newValue)

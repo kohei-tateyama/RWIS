@@ -4,8 +4,11 @@ public class NPCManager : MonoBehaviour
 {
     private string NPCName;
 
+    private BoxCollider2D trigger;
+
     private void Awake() {
         NPCName = gameObject.name;
+        trigger = gameObject.GetComponentInChildren<BoxCollider2D>();
     }
 
     private void Update()
@@ -33,7 +36,26 @@ public class NPCManager : MonoBehaviour
             }
             case "Miko":
             {
-                
+                if (StoryManager.Instance.goal == "talk_to_miko")
+                {
+                    trigger.enabled = true;
+                }
+                else
+                {
+                    trigger.enabled = false;
+                }
+                break;
+            }
+            case "Teacher":
+            {
+                if (StoryManager.Instance.goal == "talk to teacher")
+                {
+                    trigger.enabled = true;
+                }
+                else
+                {
+                    trigger.enabled = false;
+                }
                 break;
             }
             case "Note":

@@ -77,6 +77,7 @@ MIMI: Okay.. nice to meet you..#speaker:Mimi    #portrait:mimi #audio:Class_Teac
 Teacher: Today I will... #speaker:Teacher #portrait:teacher #audio:Class_Teacher_15
 
 Teacher: Here are the permission slips for next week's field trip to the mines. Please have your parents sign them and bring them back before the trip. #audio:Class_Teacher_16
+
 ~ goal = "talk_to_miko"
 
 -> END
