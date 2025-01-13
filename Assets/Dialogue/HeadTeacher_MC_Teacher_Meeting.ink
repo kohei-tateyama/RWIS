@@ -35,6 +35,6 @@ Head Teacher: Ok I know we’re on Aulus but you’ll find that this is like any
 Head Teacher: Oh it’s late, I’ll walk you to your classroom. 
 
 #audio:Dean_Meeting_9
-Head: If you need anything, ask me or you can ask Ara, the school president. She’s not here today but you’ll meet her soon. 
+Head Teacher: If you need anything, ask me or you can ask Ara, the school president. She’s not here today but you’ll meet her soon. 
 ~ goal = "go_to_class"
 -> END
