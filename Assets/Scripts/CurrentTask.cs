@@ -9,13 +9,14 @@ public class CurrentTask : MonoBehaviour
 
     private void Update()
     {
+
+        if (StoryManager.Instance.goal == "spaceport" && SceneManager.GetActiveScene().name == "spaceport")
+        {
+            SetText("*Talk to dad");
+        }
         if (StoryManager.Instance.goal == "spaceport" && SceneManager.GetActiveScene().name == "AllCombined")
         {
-            SetText("Look for dad");
-        }
-        else if (StoryManager.Instance.goal == "spaceport")
-        {
-            SetText("Talk to dad");
+            SetText("Look for dad at home");
         }
         else if (StoryManager.Instance.goal == "go_to_gate")
         {
@@ -27,23 +28,23 @@ public class CurrentTask : MonoBehaviour
         }
         else if (StoryManager.Instance.goal == "go_to_class")
         {
-            SetText("Go to the Classroom");
+            SetText("*Go to the Classroom");
         }
-        else if (StoryManager.Instance.goal == "talk_to_miko")
+        else if (StoryManager.Instance.goal == "talk_to_Miko")
         {
-            SetText("Talk with your Classmates");
+            SetText("*Talk with your Classmates");
         }
         else if (StoryManager.Instance.goal == "go_home")
         {
-            SetText("Go Home");
+            SetText("*Go Home");
         }
         else if (StoryManager.Instance.goal == "ask_dad_for_item")
         {
-            SetText("Ask dad about baking stuff");
+            SetText("*Ask dad about baking stuff");
         }
         else
         {
-            SetText("");
+            SetText("*Talk to dad");
         }
         
     }

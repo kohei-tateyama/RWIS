@@ -857,6 +857,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Layla
       objectReference: {fileID: 0}
+    - target: {fileID: 4447443608477040747, guid: 718c42475d65b4f3b9c471f6983dd7e3, type: 3}
+      propertyPath: framerate
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8367385270170277044, guid: 718c42475d65b4f3b9c471f6983dd7e3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3173,7 +3177,7 @@ PrefabInstance:
     - target: {fileID: 7865082305578447495, guid: b964581a33e204fc2ac3b445c3a5a4f8, type: 3}
       propertyPath: inkJSON
       value: 
-      objectReference: {fileID: 4900000, guid: ee6d9da50fae0461f804078c63455e0a, type: 3}
+      objectReference: {fileID: 4900000, guid: 067e8ea89c55547e49f51b1c2eb14781, type: 3}
     - target: {fileID: 8367385270170277044, guid: b964581a33e204fc2ac3b445c3a5a4f8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7453,6 +7457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: eaves_dropping_npc
       objectReference: {fileID: 0}
+    - target: {fileID: 8724811231571955323, guid: 0c2c7f4cd8a054be3b7f463142f819cc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9001865793843443627, guid: 0c2c7f4cd8a054be3b7f463142f819cc, type: 3}
       propertyPath: m_Color.b
       value: 0.21960784
@@ -7882,7 +7890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5871344987704785112, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
       propertyPath: moveSpeed
-      value: 30
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5871344987704785113, guid: 95f406b87fdc44fb698bf4216d7e64d4, type: 3}
       propertyPath: m_RootOrder
